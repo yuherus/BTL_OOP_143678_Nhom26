@@ -10,8 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/resources/FXML/App.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-	        primaryStage.setFullScreen(true);
+	        Scene scene = new Scene(fxmlLoader.load(), 1066.6, 600);
 	        primaryStage.setTitle("Hello!");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
