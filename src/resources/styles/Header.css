@@ -1,4 +1,57 @@
-
-#header-item{
-	-fx-background-color: #FFC670;
+#home_menu_bar{
+	-fx-background-color: #333;
 }
+
+#logo{
+	-fx-font-weight: bold;
+	-fx-padding:  0 30 0 5;
+	-fx-font-size: 20px;
+}
+
+#menu.icon{
+	-fx-fill: #fff;
+}
+
+#search{
+	-fx-font-size: 12px;
+	-fx-pref-width: 200px;
+	-fx-font-style: italic;
+	-fx-alignment: center;
+	-fx-cursor: text;
+	-fx-background-radius: 8px;
+	-fx-alignment: center-left;
+}
+
+.header_button{
+	-fx-margin-bottom: 10px; /* Độ lệch dưới */
+	-fx-background-color: #333;
+	-fx-text-fill: #fff;
+	-fx-font-weight: bold;
+	-fx-cursor: hand;
+	-fx-alignment: center-right;
+
+}
+
+.header_button :hover{
+	-fx-background-color: #777;
+	-fx-underline: true;
+	-fx-scale-y: 1.1;
+}
+
+.header_button:pressed {
+    -fx-scale-y: 0.9;
+    -fx-scale-x: 0.9;
+}
+
+#header_blog{
+	-fx-padding: 0 30 0 0;
+}
+
+#header_nft{
+	-fx-padding: 0 5 0 30;
+}
+
+#menu_box{
+	-fx-right: 0;
+}
+

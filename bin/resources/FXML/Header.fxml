@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
 
-<ToolBar prefHeight="40.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<ToolBar fx:id="home_menu_bar" prefHeight="48.0" prefWidth="1066.6" stylesheets="@../styles/Header.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <Button id="header-item" mnemonicParsing="false" stylesheets="@../styles/Header.css" text="Homepage" />
+      <ImageView id="logo-image" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <Label id="logo" text="LOGO" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView id="menu.icon" fill="WHITE" glyphName="SEARCH" />
+      <TextField id="search" alignment="CENTER" prefHeight="26.0" prefWidth="1000.0" promptText="Search for NFTs or Blog">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Button id="header_nft" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" styleClass="header_button" text="NFTs" textFill="WHITE" />
+      <Button id="header_blog" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="58.0" styleClass="header_button" text="Blog" />
+      <Button mnemonicParsing="false" styleClass="header_button" text="Help" textFill="WHITE" />
+      <ComboBox id="menu_box" prefHeight="26.0" prefWidth="0.0" styleClass="header_button" />
    </items>
 </ToolBar>
