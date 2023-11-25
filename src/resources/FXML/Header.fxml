@@ -24,7 +24,7 @@
          </font>
       </Label>
       <FontAwesomeIconView id="menu.icon" fill="WHITE" glyphName="SEARCH" />
-      <TextField id="search" alignment="CENTER" prefHeight="26.0" prefWidth="143.0" promptText="Search for NFTs or Blog">
+      <TextField id="search" alignment="CENTER" prefHeight="26.0" prefWidth="1000.0" promptText="Search for NFTs or Blog">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

@@ -27,7 +27,7 @@ public class ViewFactory {
 	public AnchorPane getAllCollectionView() {
 		if (allCollectionView == null) {
 			try {
-				allCollectionView = new FXMLLoader(getClass().getResource("/resources/FXML/AllNFT.fxml")).load();
+				allCollectionView = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml")).load();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -37,7 +37,7 @@ public class ViewFactory {
 	}
 	
 	public void showAllCollectionView(Stage stage) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllNFT.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));
 		changeScene(loader,stage);
 	}
 	
