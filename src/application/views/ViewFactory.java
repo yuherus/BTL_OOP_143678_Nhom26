@@ -53,5 +53,17 @@ public class ViewFactory {
 		stage.show();
 	}
 	
+	public void showCollection(Stage stage) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
+		Scene scene = null;
+		try {
+			scene = new Scene(loader.load());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		stage.setScene(scene);
+		stage.setTitle("Colection");
+		stage.show();
+	}
 
 }

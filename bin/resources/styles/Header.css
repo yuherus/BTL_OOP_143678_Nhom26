@@ -1,11 +1,11 @@
-#home_menu_bar{
-	-fx-background-color: #333;
+#header_pane{
+	-fx-background-color: black;
 }
 
 #logo{
 	-fx-font-weight: bold;
 	-fx-padding:  0 30 0 5;
-	-fx-font-size: 20px;
+	-fx-font-size: 25px;
 }
 
 #menu.icon{
@@ -23,13 +23,11 @@
 }
 
 .header_button{
-	-fx-margin-bottom: 10px; /* Độ lệch dưới */
 	-fx-background-color: #333;
 	-fx-text-fill: #fff;
 	-fx-font-weight: bold;
 	-fx-cursor: hand;
 	-fx-alignment: center-right;
-
 }
 
 .header_button :hover{
@@ -43,15 +41,5 @@
     -fx-scale-x: 0.9;
 }
 
-#header_blog{
-	-fx-padding: 0 30 0 0;
-}
 
-#header_nft{
-	-fx-padding: 0 5 0 30;
-}
-
-#menu_box{
-	-fx-right: 0;
-}
 
