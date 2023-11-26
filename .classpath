@@ -11,7 +11,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/work_space/BTL_OOP_143678_Nhom26/src/fontawesomefx-commons-9.1.2.jar"/>
-	<classpathentry kind="lib" path="D:/work_space/BTL_OOP_143678_Nhom26/src/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"/>
+	<classpathentry kind="lib" path="src/fontawesomefx-commons-9.1.2.jar"/>
+	<classpathentry kind="lib" path="src/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
