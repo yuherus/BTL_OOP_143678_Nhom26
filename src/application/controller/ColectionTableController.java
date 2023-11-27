@@ -58,24 +58,20 @@ public class ColectionTableController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Nhập dữ liệu của collectionTable
-		collectionList = FXCollections.observableArrayList(
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1)
-		);
-		
+		collectionList = FXCollections.observableArrayList(CollectionData.getTrendingCollections("", "D1", 20));
+			
 		collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("collection"));
 		floorPriceColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("floorPrice"));
-		volumnColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumn"));
-		volumnChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumnChange"));
+		volumnColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
+		volumnChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
 		collectionTable.setItems(collectionList);
 		collectionTable.setOnMouseClicked(event -> {
 			Collection selectedCollection = collectionTable.getSelectionModel().getSelectedItem();
 			if (selectedCollection != null) {
 				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
 				ViewFactory viewFactory = new ViewFactory();
-				viewFactory.showCollection(stage);
+				appBorderPane.setCenter(viewFactory.getCollectionView(selectedCollection));
 			}
 		});	
 		

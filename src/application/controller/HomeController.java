@@ -35,7 +35,6 @@ public class HomeController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		view_all_collections_btn.setOnAction(event -> {
 			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
 			ViewFactory viewFactory = new ViewFactory();

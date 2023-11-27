@@ -1,5 +1,8 @@
 package application.views;
 
+import application.controller.CollectionController;
+import application.data.CollectionData;
+import application.models.Collection;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -36,6 +39,21 @@ public class ViewFactory {
 		return allCollectionView;
 	}
 	
+	public AnchorPane getCollectionView(Collection collection) {
+		if (allCollectionView == null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
+				allCollectionView = loader.load();
+				CollectionController collectionController = loader.getController();
+				collectionController.setCollectionData(collection);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return allCollectionView;
+	}
+	
 	public void showAllCollectionView(Stage stage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));
 		changeScene(loader,stage);
@@ -53,11 +71,13 @@ public class ViewFactory {
 		stage.show();
 	}
 	
-	public void showCollection(Stage stage) {
+	public void showCollection(Stage stage, Collection collection) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
 		Scene scene = null;
 		try {
 			scene = new Scene(loader.load());
+			CollectionController collectionController = loader.getController();
+			collectionController.setCollectionData(collection);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
