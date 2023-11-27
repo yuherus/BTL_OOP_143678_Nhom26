@@ -5,15 +5,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ColectionTableController">
    <children>
       <TableView fx:id="collectionTable" layoutX="6.0" layoutY="52.0" prefHeight="350.0" prefWidth="700.0">
          <columns>
             <TableColumn fx:id="collectionColumn" prefWidth="247.20000457763672" text="Colection" />
             <TableColumn fx:id="floorPriceColumn" minWidth="0.0" prefWidth="84.0" text="Floor Price" />
-            <TableColumn fx:id="volumnColumn" prefWidth="90.4000244140625" text="Volumn" />
-            <TableColumn fx:id="volumnChangeColumn" prefWidth="108.79998779296875" text="Volumn Change" />
+            <TableColumn fx:id="volumeColumn" prefWidth="90.4000244140625" text="Volume" />
+            <TableColumn fx:id="volumeChangeColumn" prefWidth="108.79998779296875" text="Volume Change" />
          </columns>
       </TableView>
       <ComboBox fx:id="trendingComboBox" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="70.0" promptText="1D" />

@@ -10,8 +10,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -32,6 +34,7 @@ public class HomeController implements Initializable{
 	
 	private ObservableList<String> tagListData;
 
+	public int text = 1;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -72,6 +75,7 @@ public class HomeController implements Initializable{
                 setStyle("-fx-background-color: transparent;");
             }
         });
+		
 	}
 	
 	

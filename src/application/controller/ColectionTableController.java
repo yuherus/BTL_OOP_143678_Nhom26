@@ -43,10 +43,10 @@ public class ColectionTableController implements Initializable {
 	TableColumn<Collection, Double> floorPriceColumn;
 	
 	@FXML
-	TableColumn<Collection, Double> volumnColumn;
+	TableColumn<Collection, Double> volumeColumn;
 	
 	@FXML
-	TableColumn<Collection, Double> volumnChangeColumn;
+	TableColumn<Collection, Double> volumeChangeColumn;
 	
 	@FXML
 	private ComboBox<String> trendingComboBox;
@@ -58,12 +58,11 @@ public class ColectionTableController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Nhập dữ liệu của collectionTable
-		collectionList = FXCollections.observableArrayList(CollectionData.getTrendingCollections("", "D1", 20));
-			
+		collectionList = FXCollections.observableArrayList(CollectionData.getTrendingCollections("", "D1", 20));	
 		collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("collection"));
 		floorPriceColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("floorPrice"));
-		volumnColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
-		volumnChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
+		volumeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
+		volumeChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
 		collectionTable.setItems(collectionList);
 		collectionTable.setOnMouseClicked(event -> {
 			Collection selectedCollection = collectionTable.getSelectionModel().getSelectedItem();
