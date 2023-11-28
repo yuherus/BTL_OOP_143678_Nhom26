@@ -3,38 +3,37 @@ package application.controller;
 import application.models.*;
 import application.views.ViewFactory;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.data.CollectionData;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class ColectionTableController implements Initializable {
+public class CollectionTableController implements Initializable {
 	private static final Stage FXMLLoader = null;
 	
 	@FXML
 	TableView<Collection> collectionTable;
+	
+	@FXML
+	TableColumn<Collection, Number> topColumn;
+	
+	@FXML
+	TableColumn<Collection, String> imageColumn;
 	
 	@FXML
 	TableColumn<Collection, String> collectionColumn;
@@ -43,10 +42,10 @@ public class ColectionTableController implements Initializable {
 	TableColumn<Collection, Double> floorPriceColumn;
 	
 	@FXML
-	TableColumn<Collection, Double> volumnColumn;
+	TableColumn<Collection, Double> volumeColumn;
 	
 	@FXML
-	TableColumn<Collection, Double> volumnChangeColumn;
+	TableColumn<Collection, Double> volumeChangeColumn;
 	
 	@FXML
 	private ComboBox<String> trendingComboBox;
@@ -59,11 +58,41 @@ public class ColectionTableController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Nhập dữ liệu của collectionTable
 		collectionList = FXCollections.observableArrayList(CollectionData.getTrendingCollections("", "D1", 20));
-			
-		collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("collection"));
+		// Đặt dữ liệu cho cột số thứ tự
+        topColumn.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(collectionTable.getItems().indexOf(column.getValue()) + 1));
+		// Đặt giá trị cho cột ảnh
+	    imageColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("imageUrl"));
+
+	    // Tạo một cột tùy chỉnh để hiển thị ảnh
+	    imageColumn.setCellFactory(column -> {
+	        return new TableCell<Collection, String>() {
+	            private final ImageView imageView = new ImageView();
+	            {
+	                // Thiết lập kích thước hình ảnh (tùy chọn)
+	                imageView.setFitWidth(25);
+	                imageView.setFitHeight(25);
+	            }
+
+	            @Override
+	            protected void updateItem(String item, boolean empty) {
+	                super.updateItem(item, empty);
+
+	                if (item == null || empty) {
+	                    // Nếu dữ liệu rỗng, đặt ô cell thành trống
+	                    setGraphic(null);
+	                } else {
+	                    // Nếu có dữ liệu, tải và hiển thị ảnh từ đường dẫn URL
+	                    Image image = new Image(item);
+	                    imageView.setImage(image);
+	                    setGraphic(imageView);
+	                }
+	            }
+	        };
+	    });
+	    collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("collection"));
 		floorPriceColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("floorPrice"));
-		volumnColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
-		volumnChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
+		volumeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
+		volumeChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
 		collectionTable.setItems(collectionList);
 		collectionTable.setOnMouseClicked(event -> {
 			Collection selectedCollection = collectionTable.getSelectionModel().getSelectedItem();
