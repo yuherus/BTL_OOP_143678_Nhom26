@@ -1,0 +1,61 @@
+
+#Box1{
+	-fx-background-color:#FFF6EE;
+    -fx-border-radius: 10; /* Độ cong của góc của đường viền (nếu có) */
+
+}
+#Box2{
+	-fx-background-color:#FFF6EE;
+	 -fx-border-radius: 10; /* Độ cong của góc của đường viền (nếu có) */
+
+}
+#Link1{
+	-fx-font-size: 17px; /* Đổi kích thước chữ thành 24px */
+    -fx-font-family: "PT Serif", serif; /* Sử dụng phông chữ PT Serif */
+    -fx-text-fill:#000; /* Red text color */
+   
+}
+#Link2{
+	-fx-font-size: 17px; /* Đổi kích thước chữ thành 24px */
+    -fx-font-family: "PT Serif", serif; /* Sử dụng phông chữ PT Serif */
+    -fx-text-fill:#000; /* Red text color */
+}
+#Anchor1{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 1 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor2{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor3{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor5{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 1 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor6{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor7{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor1{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 1 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Anchor2{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+#Image1{
+	    -fx-background-radius: 10; /* Set the background radius to 10px */
+}
+#Line{
+	-fx-border-color: #111; /* Màu của đường gạch */
+    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}

@@ -1,39 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="598.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CollectionController">
+<AnchorPane prefHeight="598.0" prefWidth="900.0" stylesheets="@../styles/Collection.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CollectionController">
    <children>
-      <Text fx:id="collectionDescription" layoutX="47.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="545.4700393676758">
+      <Text fx:id="collectionDescription" layoutX="48.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="545.4700393676758">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="collectionName" layoutX="48.0" layoutY="220.0" prefHeight="16.0" prefWidth="130.0" text="Label">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="collectionBackgroundUrl" fitHeight="150.0" fitWidth="869.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" />
-      <ImageView fx:id="collectionImgUrl" fitHeight="94.0" fitWidth="115.0" layoutX="47.0" layoutY="102.0" pickOnBounds="true" />
-      <AnchorPane layoutX="623.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 1px; -fx-border-color: #000; -fx-border-radius: 10px;">
+      <ImageView fx:id="collectionBackgroundUrl" fitHeight="200.0" fitWidth="869.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/image%203.png" />
+         </image></ImageView>
+      <ImageView id="Image1" fx:id="collectionImgUrl" fitHeight="110.0" fitWidth="115.0" layoutX="82.0" layoutY="147.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Hình.jpg" />
+         </image></ImageView>
+      <AnchorPane id="Anchorright" layoutX="641.0" layoutY="229.0" prefHeight="200.0" prefWidth="206.0" style="-fx-border-width: 1px; -fx-border-color: #000; -fx-border-radius: 10px; -fx-background-color: #FFFFFF;" stylesheets="@../styles/Collection.css">
          <children>
-            <Label layoutX="19.0" layoutY="41.0" text="Floor Price" />
-            <Label layoutX="18.0" layoutY="73.0" text="Total Volume" />
-            <Label layoutX="18.0" layoutY="102.0" text="Item" />
-            <Label layoutX="18.0" layoutY="133.0" text="Blockchain" />
+            <Label layoutX="18.0" layoutY="23.0" text="Floor Price">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="18.0" layoutY="57.0" text="Total Volume">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="18.0" layoutY="90.0" prefHeight="20.0" prefWidth="44.0" text="Item">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label id="Owners" fx:id="collectionName" layoutX="18.0" layoutY="124.0" prefHeight="21.0" prefWidth="163.0" stylesheets="@../styles/Collection.css" text="Owners">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <VBox id="Line" layoutX="12.0" layoutY="149.0" prefHeight="16.0" prefWidth="175.0" stylesheets="@../styles/Collection.css" />
+            <Label layoutX="18.0" layoutY="168.0" text="Blockchain">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <Text fx:id="floorPrice" layoutX="141.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fx:id="volume" layoutX="141.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fx:id="item" layoutX="141.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fx:id="blockchain" layoutX="141.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
-      <VBox layoutX="56.0" layoutY="481.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" />
-      <VBox layoutX="477.0" layoutY="480.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" />
+      <VBox id="Box1" fx:id="Box1" layoutX="56.0" layoutY="481.0" prefHeight="289.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
+         <children>
+            <Hyperlink id="Link1" alignment="CENTER" prefHeight="33.0" prefWidth="129.0" stylesheets="@../styles/Collection.css" text="Related Tweet" />
+            <AnchorPane id="Anchor1" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="85.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." wrappingWidth="227.619140625" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor2" prefHeight="70.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="84.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor3" prefHeight="70.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="86.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor4" prefHeight="69.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="88.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
+               </children>
+            </AnchorPane>
+         </children></VBox>
+      <VBox id="Box2" layoutX="477.0" layoutY="480.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
+         <children>
+            <Hyperlink id="Link2" prefHeight="34.0" prefWidth="124.0" stylesheets="@../styles/Collection.css" text="Related Blog" />
+            <AnchorPane id="Anchor5" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizens of Mantle have landed." wrappingWidth="227.619140625" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor6" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="227.619140625" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor7" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know About ..." wrappingWidth="227.619140625" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Anchor8" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/collection.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="92.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know About ..." wrappingWidth="227.619140625" />
+               </children>
+            </AnchorPane>
+         </children></VBox>
+      <Label layoutX="125.0" layoutY="275.0" text="Label">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
