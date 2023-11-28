@@ -40,18 +40,28 @@ public class ViewFactory {
 	}
 	
 	public AnchorPane getCollectionView(Collection collection) {
-		if (allCollectionView == null) {
+		AnchorPane collectionView = null;
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
-				allCollectionView = loader.load();
+				collectionView = loader.load();
 				CollectionController collectionController = loader.getController();
 				collectionController.setCollectionData(collection);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		return allCollectionView;
+		return collectionView;
+	}
+	
+	public AnchorPane getHomeView() {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Home.fxml"));
+				AnchorPane homeView = loader.load();
+				return homeView;
+	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
 	}
 	
 	public void showAllCollectionView(Stage stage) {

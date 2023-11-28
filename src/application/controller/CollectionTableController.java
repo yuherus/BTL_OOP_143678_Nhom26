@@ -57,7 +57,18 @@ public class CollectionTableController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Nhập dữ liệu của collectionTable
-		collectionList = FXCollections.observableArrayList(CollectionData.getTrendingCollections("", "D1", 20));
+		collectionList = FXCollections.observableArrayList(
+				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Test Ape Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Test Ape Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
+				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1)
+				);
 		// Đặt dữ liệu cho cột số thứ tự
         topColumn.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(collectionTable.getItems().indexOf(column.getValue()) + 1));
 		// Đặt giá trị cho cột ảnh
