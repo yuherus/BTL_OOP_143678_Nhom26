@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
@@ -40,19 +41,42 @@ public class ViewFactory {
 	}
 	
 	public AnchorPane getCollectionView(Collection collection) {
-		if (allCollectionView == null) {
+		AnchorPane collectionView = null;
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
-				allCollectionView = loader.load();
+				collectionView = loader.load();
 				CollectionController collectionController = loader.getController();
 				collectionController.setCollectionData(collection);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		return allCollectionView;
+		return collectionView;
 	}
+	
+	public AnchorPane getHomeView() {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Home.fxml"));
+				AnchorPane homeView = loader.load();
+				return homeView;
+	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+	}
+	
+	public Pane getAllBlogView() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Bloglist.fxml"));
+			Pane homeView = loader.load();
+			return homeView;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	public void showAllCollectionView(Stage stage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));

@@ -118,16 +118,18 @@ public class Collection {
 		return volume;
 	}
 
-	public void setVolume(double volumn) {
-		this.volume = volumn;
+
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 
 	public double getVolumeChange() {
 		return volumeChange;
 	}
 
-	public void setVolumeChange(double volumnChange) {
-		this.volumeChange = volumnChange;
+
+	public void setVolumeChange(double volumeChange) {
+		this.volumeChange = volumeChange;
 	}
 	
 }

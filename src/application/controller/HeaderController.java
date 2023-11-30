@@ -4,12 +4,17 @@ package application.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class HeaderController implements Initializable {
@@ -21,6 +26,9 @@ public class HeaderController implements Initializable {
 	
 	@FXML
 	private ComboBox<String> header_combobox;
+	
+	@FXML
+	private AnchorPane homeBtn;
 	
 	ObservableList<String> list = FXCollections.observableArrayList("NFTs", "Trending", "All ìnformation");
 	
@@ -35,6 +43,11 @@ public class HeaderController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		header_combobox.setItems(list);
+		homeBtn.setOnMouseClicked( event -> {
+			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
+			ViewFactory viewFactory = new ViewFactory();
+			appBorderPane.setCenter(viewFactory.getHomeView());
+		});
 	}
 
 
