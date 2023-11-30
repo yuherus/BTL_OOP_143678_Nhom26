@@ -1,0 +1,51 @@
+
+
+#Box{
+	-fx-border-color: #000000; 
+    -fx-border-width: 1px;
+    -fx-border-radius: 10; 
+
+}
+#Anchor1{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0;
+}
+#Anchor2{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#Anchor3{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#VB1{
+     -fx-border-color: #000000; 
+    -fx-border-width: 1px; 
+    -fx-border-radius: 10; 
+	}
+#VB2{
+     -fx-border-color: #000000; 
+    -fx-border-width: 1px; 
+    -fx-border-radius: 10; 
+	}
+#AnchorB1{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#AnchorB2{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#AnchorB3{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#AnchorB4{
+	  -fx-border-color: #B4B4B4; 
+    -fx-border-width: 0 0 1 0; 
+}
+#Keyword{
+	-fx-font-size: 17px; /* Đổi kích thước chữ thành 24px */
+    -fx-font-family: "Paytone One"; /* Sử dụng phông chữ PT Serif */
+    -fx-text-fill:#000; /* Red text color */
+};
