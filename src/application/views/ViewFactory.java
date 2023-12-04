@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
@@ -63,6 +64,19 @@ public class ViewFactory {
 			}
 			return null;
 	}
+	
+	public Pane getAllBlogView() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Bloglist.fxml"));
+			Pane homeView = loader.load();
+			return homeView;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	public void showAllCollectionView(Stage stage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));

@@ -39,7 +39,13 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
 public class HomeController implements Initializable{
 	@FXML
-	private Button view_all_collections_btn;
+	private Button viewAllCollections;
+	
+	@FXML
+	private Button viewAllBlogs;
+	
+	@FXML
+	private Button viewMoreTweets;
 	
 	@FXML
     private ListView<String> tagList;
@@ -53,10 +59,16 @@ public class HomeController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		view_all_collections_btn.setOnAction(event -> {
+		viewAllCollections.setOnAction(event -> {
 			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
 			ViewFactory viewFactory = new ViewFactory();
 			appBorderPane.setCenter(viewFactory.getAllCollectionView());
+		});
+		
+		viewAllBlogs.setOnAction(event -> {
+			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
+			ViewFactory viewFactory = new ViewFactory();
+			appBorderPane.setCenter(viewFactory.getAllBlogView());
 		});
 		
 		//Nhập dữ liệu cho tagList
