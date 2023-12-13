@@ -5,18 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CollectionTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="757.0" stylesheets="@../styles/CollectionTable.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CollectionTableController">
    <children>
-      <TableView fx:id="collectionTable" layoutX="6.0" layoutY="52.0" prefHeight="350.0" prefWidth="700.0">
+      <TableView id="tableView" fx:id="collectionTable" layoutX="8.0" layoutY="65.0" prefHeight="366.0" prefWidth="741.0">
          <columns>
-            <TableColumn fx:id="topColumn" prefWidth="44.79998779296875" text="#" />
-            <TableColumn fx:id="imageColumn" prefWidth="40.79998779296875" text=" " />
-            <TableColumn fx:id="collectionColumn" prefWidth="315.1999816894531" text="Colection" />
-            <TableColumn fx:id="floorPriceColumn" minWidth="0.0" prefWidth="84.0" text="Floor Price" />
-            <TableColumn fx:id="volumeColumn" prefWidth="90.4000244140625" text="Volume" />
-            <TableColumn fx:id="volumeChangeColumn" prefWidth="108.79998779296875" text="Volume Change" />
+            <TableColumn fx:id="topColumn" prefWidth="48.799986839294434" text="Top" />
+            <TableColumn fx:id="imageColumn" prefWidth="52.80002212524414" text=" " />
+            <TableColumn id="colection_column" fx:id="collectionColumn" prefWidth="239.9999542236328" text="Collection" />
+            <TableColumn fx:id="floorPriceColumn" minWidth="0.0" prefWidth="116.800048828125" text="Floor Price" />
+            <TableColumn fx:id="volumeColumn" prefWidth="103.99993896484375" text="Volume" />
+            <TableColumn fx:id="volumeChangeColumn" prefWidth="186.39996337890625" text="Volume Change" />
          </columns>
       </TableView>
-      <ComboBox fx:id="trendingComboBox" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="70.0" promptText="1D" />
+      <ComboBox id="choose_time" fx:id="trendingComboBox" layoutX="8.0" layoutY="21.0" prefHeight="29.0" prefWidth="98.0" promptText="1D" />
    </children>
 </AnchorPane>

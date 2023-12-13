@@ -16,12 +16,12 @@
    <children>
       <AnchorPane fx:id="homeBtn" prefHeight="46.0" prefWidth="184.0">
          <children>
-            <ImageView id="logo-image" fitHeight="46.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="logo-image" fitHeight="36.0" fitWidth="37.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-            <Label id="logo" layoutX="48.0" layoutY="5.0" prefHeight="36.0" prefWidth="123.0" text="LOGO" textFill="WHITE">
+            <Label id="logo" layoutX="48.0" layoutY="5.0" prefHeight="36.0" prefWidth="117.0" text="LOGO" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -41,11 +41,6 @@
       <FontAwesomeIconView id="menu.icon" fill="#696868" glyphName="SEARCH" layoutX="437.0" layoutY="28.0" size="14.0" text="">
          <font>
             <Font name="System Bold" size="16.0" />
-         </font>
-      </FontAwesomeIconView>
-      <FontAwesomeIconView fill="WHITE" layoutX="918.0" layoutY="29.0" text="">
-         <font>
-            <Font size="14.0" />
          </font>
       </FontAwesomeIconView>
    </children>
