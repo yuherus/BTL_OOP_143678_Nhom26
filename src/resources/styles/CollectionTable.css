@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ribeye&display=swap');
+
+#choose_time {
+	-fx-font-family: "Ribeye", san-serif;
+	-fx-font-weight: bold;
+	-fx-font-size: 15px;
+	-fx-background-color:#D9D9D9;
+	-fx-background-radius: 12px;
+}
+#tableView .column-header {
+	-fx-font-family: "Ribeye", san-serif;
+	-fx-font-weight: bold;
+	-fx-font-size: 15px;
+	-fx-background-color:#D9D9D9;
+}
+
+.table-view .table-cell {
+	-fx-alignment: center;
+    -fx-font-family: "Roboto Serif", san-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
