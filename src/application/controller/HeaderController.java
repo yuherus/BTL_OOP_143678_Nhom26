@@ -4,6 +4,7 @@ package application.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.models.Model;
 import application.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +31,7 @@ public class HeaderController implements Initializable {
 	@FXML
 	private AnchorPane homeBtn;
 	
-	ObservableList<String> list = FXCollections.observableArrayList("NFTs", "Trending", "All ìnformation");
+	ObservableList<String> list = FXCollections.observableArrayList("Update Data", "Help");
 	
 	public ToolBar getToolBar() {
 		return home_menu_bar;
@@ -45,8 +46,7 @@ public class HeaderController implements Initializable {
 		header_combobox.setItems(list);
 		homeBtn.setOnMouseClicked( event -> {
 			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
-			ViewFactory viewFactory = new ViewFactory();
-			appBorderPane.setCenter(viewFactory.getHomeView());
+			appBorderPane.setCenter(Model.getInstance().getViewFactory().getHomeView());
 		});
 	}
 

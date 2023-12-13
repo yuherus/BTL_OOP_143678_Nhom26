@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="299.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="119.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/loading-spinner.gif" />
+               </image>
+            </ImageView>
+            <Label layoutX="65.0" layoutY="235.0" text="XIN VUI LÒNG ĐỢI TRONG GIÂY LÁT !!" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
