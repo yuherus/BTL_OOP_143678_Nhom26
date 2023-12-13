@@ -1,10 +1,12 @@
 package application.views;
 
 import application.controller.CollectionController;
+import application.controller.SearchController;
 import application.data.CollectionData;
 import application.models.Collection;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -77,6 +79,19 @@ public class ViewFactory {
 		return null;
 	}
 	
+	public AnchorPane getSearch(String textField) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Search.fxml"));
+			AnchorPane searchView = loader.load();
+			SearchController searchController = loader.getController();
+			searchController.setLabel(textField);
+			return searchView;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+}
 	
 	public void showAllCollectionView(Stage stage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));
@@ -109,5 +124,11 @@ public class ViewFactory {
 		stage.setTitle("Colection");
 		stage.show();
 	}
+	
+	public void showSearch(Stage stage) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Search.fxml"));
+		changeScene(loader,stage);
+	}
+	
 
 }
