@@ -10,7 +10,6 @@
       		      		<fx:include fx:id="header" source="Header.fxml" />
       		</top>
       		<center>
-      					<fx:include source="Home.fxml" />
       		</center>
       </BorderPane>
    </content>

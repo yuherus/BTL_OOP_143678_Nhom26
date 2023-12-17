@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 public class ViewFactory {
 	private ScrollPane appView;
 	private AnchorPane allCollectionView;
+	private AnchorPane homeView;
 	
 	public ViewFactory() {}
 	
@@ -54,15 +55,15 @@ public class ViewFactory {
 	}
 	
 	public AnchorPane getHomeView() {
+		if (homeView == null) {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Home.fxml"));
-				AnchorPane homeView = loader.load();
-				return homeView;
-	
+				homeView = loader.load();	
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return null;
+		}
+		return homeView;
 	}
 	
 	public Pane getAllBlogView() {

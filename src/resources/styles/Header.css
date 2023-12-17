@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Potta+One&display=swap');
+
 #header_pane{
 	-fx-background-color: black;
 }
@@ -6,6 +8,7 @@
 	-fx-font-weight: bold;
 	-fx-padding:  0 30 0 5;
 	-fx-font-size: 25px;
+	-fx-font-family: "Ribeye", san-serif;
 }
 
 #menu.icon{
@@ -41,5 +44,11 @@
     -fx-scale-x: 0.9;
 }
 
+#header_blog, #header_nft, #header_back {
+	-fx-font-family: "Potta One", san-serif;
+	-fx-font-size: 15px;
+}
 
-
+#header_blog, #header_nft {
+	-fx-alignment: center;
+}
