@@ -20,10 +20,7 @@
                   <children>
                   	 <fx:include source="CollectionTable.fxml" translateX="70.0" translateY="70.0" />
                      <ComboBox layoutX="167.0" layoutY="84.0" prefHeight="25.0" prefWidth="106.0" />
-                     <Button layoutX="362.0" layoutY="499.0" mnemonicParsing="false" text="View all collections">
-                        <graphic>
-                           <Label text="Label" />
-                        </graphic></Button>
+                     <Button layoutX="362.0" layoutY="499.0" mnemonicParsing="false" text="View all collections" />
                      <Label id="Keyword" layoutX="328.0" layoutY="40.0" stylesheets="@../styles/Search.css" text="Search results for &quot;key word&quot;" />
                   </children>
                </AnchorPane>
