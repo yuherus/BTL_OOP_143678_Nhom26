@@ -9,6 +9,10 @@ import application.models.Blog;
 import application.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -20,18 +24,24 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
 public class HomeController implements Initializable{
+	@FXML
+	private AnchorPane homePane;
+	
 	@FXML
 	private Button viewAllCollections;
 	
@@ -50,9 +60,10 @@ public class HomeController implements Initializable{
 	private ObservableList<String> tagListData;
 
 	public int text = 1;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        
 		viewAllCollections.setOnAction(event -> {
 			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
 			ViewFactory viewFactory = new ViewFactory();
@@ -76,9 +87,6 @@ public class HomeController implements Initializable{
 			"#degods",
 			"#degods",
 			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
 			"#degods"
 		);
 		tagList.setItems(tagListData);
@@ -93,7 +101,7 @@ public class HomeController implements Initializable{
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(item);
-                setStyle("-fx-background-color: transparent;");
+                setStyle("-fx-background-color: transparent;-fx-padding: 9px; -fx-border-color: #B4B4B4; -fx-border-width: 0.5px 0 0 0;");      
             }
         });
 		
@@ -103,12 +111,11 @@ public class HomeController implements Initializable{
 		newestBlogList.add(new Blog("CR7 ForeverZone Box Utilities: What They Are and How to Claim","Learn more about what\u2019s inside the 50,000 free mystery boxes being given away as part of Binance and Cristiano Ronaldo's third NFT drop.","Rarible Blog","Content","1/1/2023","https://rarible.com/blog/content/images/size/w600/2023/10/RaribleX-Press-Release--1-.png","https://public.bnbstatic.com/image/cms/blog/20231009/50a7eb04-e152-47a0-aa53-d04fc92c1678.png"));
 		newestBlogList.add(new Blog("CR7 ForeverZone Box Utilities: What They Are and How to Claim","Learn more about what\u2019s inside the 50,000 free mystery boxes being given away as part of Binance and Cristiano Ronaldo's third NFT drop.","Rarible Blog","Content","1/1/2023","https://rarible.com/blog/content/images/size/w600/2023/10/RaribleX-Press-Release--1-.png","https://public.bnbstatic.com/image/cms/blog/20231009/50a7eb04-e152-47a0-aa53-d04fc92c1678.png"));
 		newestBlogList.add(new Blog("CR7 ForeverZone Box Utilities: What They Are and How to Claim","Learn more about what\u2019s inside the 50,000 free mystery boxes being given away as part of Binance and Cristiano Ronaldo's third NFT drop.","Content","Rarible Blog","1/1/2023","https://rarible.com/blog/content/images/size/w600/2023/10/RaribleX-Press-Release--1-.png","https://public.bnbstatic.com/image/cms/blog/20231009/50a7eb04-e152-47a0-aa53-d04fc92c1678.png"));
-
 		
-        ArrayList<VBox> vBoxList = creteVBoxWithData(newestBlogList);
-            for (VBox vBox : vBoxList) {
-				newestBlog.getChildren().add(vBox);
-			}
+		ArrayList<VBox> vBoxList = creteVBoxWithData(newestBlogList);
+		for (VBox vBox : vBoxList) {
+			newestBlog.getChildren().add(vBox);
+		}        
 	}
 	
 	private ArrayList<VBox> creteVBoxWithData(ArrayList<Blog> newestBlogList) {
@@ -120,6 +127,7 @@ public class HomeController implements Initializable{
 	        vBox.setSpacing(10.0);
 
 	        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+	        
 	        imageView.setFitWidth(150.0);
 	        imageView.setPreserveRatio(true);
 
