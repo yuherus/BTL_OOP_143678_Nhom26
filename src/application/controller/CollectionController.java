@@ -28,18 +28,18 @@ public class CollectionController extends Controller{
 	Text volume;
 	
 	@FXML
-	Text item;
+	Text address;
 	
 	@FXML
 	Text blockchain;
 	
 	public void setCollectionData(Collection collection){
-		collectionName.setText(collection.getCollection());
+		collectionName.setText(collection.getName());
 		collectionDescription.setText(collection.getDescription());
 		collectionImgUrl.setImage(new Image(collection.getImageUrl()));
-		floorPrice.setText(Double.toString(collection.getFloorPrice()));
-		volume.setText(Double.toString(collection.getVolume()));
-		item.setText(Integer.toString(collection.getItem()));
+		floorPrice.setText(Double.toString(collection.getFloorPrice())+" "+collection.getFloorPriceUnit());
+		volume.setText(Double.toString(collection.getVolumeNative())+" "+collection.getVolumeNativeUnit());
 		blockchain.setText(collection.getBlockchain());
+		address.setText(collection.getId().substring(collection.getId().indexOf(":")+1));
 	}
 }

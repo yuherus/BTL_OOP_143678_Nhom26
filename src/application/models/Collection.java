@@ -1,135 +1,138 @@
 package application.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Collection {
-	private String id;
-	private String collection;
-	private String description;
-	private String imageUrl;
-	private String backgroundUrl;
-	private String blockchain;
-	private int item;
-	private double floorPrice;
-	private double volume;
-	private double volumeChange;
 	
-	public Collection(String id, String collection, String description, String imageUrl, String backgroundUrl,
-			String blockchain, int item, double floorPrice, double volume, double volumeChange) {
-		super();
-		this.id = id;
-		this.collection = collection;
-		this.description = description;
-		this.imageUrl = imageUrl;
-		this.backgroundUrl = backgroundUrl;
-		this.blockchain = blockchain;
-		this.item = item;
-		this.floorPrice = floorPrice;
-		this.volume = volume;
-		this.volumeChange = volumeChange;
-	}
+	 	@JsonProperty("id")
+	    private String id;
 
-	public Collection(String collection, double floorPrice, double volume, double volumeChange) {
-		super();
-		this.collection = collection;
-		this.floorPrice = floorPrice;
-		this.volume = volume;
-		this.volumeChange = volumeChange;
-	}
+	    @JsonProperty("volumeNative")
+	    private double volumeNative;
 
+	    @JsonProperty("volumeNativeUnit")
+	    private String volumeNativeUnit;
 
+	    @JsonProperty("floorPrice")
+	    private double floorPrice;
 
-	public Collection() {
-		
-	}
-	
+	    @JsonProperty("floorPriceUnit")
+	    private String floorPriceUnit;
+
+	    @JsonProperty("VolumeChange")
+	    private double volumeChange;
+
+	    @JsonProperty("blockchain")
+	    private String blockchain;
+
+	    @JsonProperty("name")
+	    private String name;
+
+	    @JsonProperty("description")
+	    private String description;
+
+	    @JsonProperty("imageUrl")
+	    private String imageUrl;
+
 	public String getId() {
 		return id;
 	}
-	
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public String getCollection() {
-		return collection;
-	}
-
-	public void setCollection(String collection) {
-		this.collection = collection;
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		return "Collection [id=" + id + ", collection=" + collection + ", description=" + description + ", imageUrl="
-				+ imageUrl + ", backgroundUrl=" + backgroundUrl + ", blockchain=" + blockchain + ", item=" + item
-				+ ", floorPrice=" + floorPrice + ", volume=" + volume + ", volumeChange=" + volumeChange + "]";
-	}
-
 	public String getImageUrl() {
 		return imageUrl;
 	}
-
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
-	public String getBackgroundUrl() {
-		return backgroundUrl;
-	}
-
-	public void setBackgroundUrl(String backgroundUrl) {
-		this.backgroundUrl = backgroundUrl;
-	}
-
 	public String getBlockchain() {
 		return blockchain;
 	}
-
 	public void setBlockchain(String blockchain) {
 		this.blockchain = blockchain;
 	}
-
-	public int getItem() {
-		return item;
-	}
-
-	public void setItem(int item) {
-		this.item = item;
-	}
-
 	public double getFloorPrice() {
 		return floorPrice;
 	}
-
 	public void setFloorPrice(double floorPrice) {
 		this.floorPrice = floorPrice;
 	}
-
-	public double getVolume() {
-		return volume;
+	public String getFloorPriceUnit() {
+		return floorPriceUnit;
 	}
-
-
-	public void setVolume(double volume) {
-		this.volume = volume;
+	public void setFloorPriceUnit(String floorPriceUnit) {
+		this.floorPriceUnit = floorPriceUnit;
 	}
-
+	public double getVolumeNative() {
+		return volumeNative;
+	}
+	public void setVolumeNative(double volumeNative) {
+		this.volumeNative = volumeNative;
+	}
+	public String getVolumeNativeUnit() {
+		return volumeNativeUnit;
+	}
+	public void setVolumeNativeUnit(String volumeNativeUnit) {
+		this.volumeNativeUnit = volumeNativeUnit;
+	}
 	public double getVolumeChange() {
 		return volumeChange;
 	}
-
-
 	public void setVolumeChange(double volumeChange) {
 		this.volumeChange = volumeChange;
 	}
+	@Override
+	public String toString() {
+		return "Collection [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
+				+ ", blockchain=" + blockchain + ", floorPrice=" + floorPrice + ", floorPriceUnit=" + floorPriceUnit
+				+ ", volumeNative=" + volumeNative + ", volumeNativeUnit=" + volumeNativeUnit + ", volumeChange="
+				+ volumeChange + "]";
+	}
+	
+	@JsonCreator
+	public Collection(@JsonProperty("id") String id,
+            @JsonProperty("volumeNative") double volumeNative,
+            @JsonProperty("volumeNativeUnit") String volumeNativeUnit,
+            @JsonProperty("floorPrice") double floorPrice,
+            @JsonProperty("floorPriceUnit") String floorPriceUnit,
+            @JsonProperty("VolumeChange") double volumeChange,
+            @JsonProperty("blockchain") String blockchain,
+            @JsonProperty("name") String name,
+            @JsonProperty("description") String description,
+            @JsonProperty("imageUrl") String imageUrl) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.blockchain = blockchain;
+		this.floorPrice = floorPrice;
+		this.floorPriceUnit = floorPriceUnit;
+		this.volumeNative = volumeNative;
+		this.volumeNativeUnit = volumeNativeUnit;
+		this.volumeChange = volumeChange;
+	}
+	public Collection(String name, double floorPrice, double volumeNative, double volumeChange) {
+		super();
+		this.volumeNative = volumeNative;
+		this.floorPrice = floorPrice;
+		this.volumeChange = volumeChange;
+		this.name = name;
+	}
+	
 	
 }

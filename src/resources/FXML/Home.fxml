@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -30,7 +29,6 @@
       <AnchorPane id="pane_border_trending" layoutX="14.0" layoutY="23.0" prefHeight="518.0" prefWidth="802.0">
          <children>
             <Line endX="700.0" layoutX="101.0" layoutY="49.0" startX="-100.0" stroke="#c6c3c3" />
-            <ComboBox id="all_chains" layoutX="151.0" layoutY="62.0" prefHeight="32.0" prefWidth="146.0" promptText="All chains" />
             	 <Button id="button_viewallCollection" fx:id="viewAllCollections" layoutX="293.0" layoutY="478.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="178.0" text="View all collections" />
          </children>
       </AnchorPane>

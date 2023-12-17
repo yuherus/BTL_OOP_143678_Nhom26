@@ -10,11 +10,10 @@
       <TableView id="tableView" fx:id="collectionTable" layoutX="8.0" layoutY="65.0" prefHeight="366.0" prefWidth="741.0">
          <columns>
             <TableColumn fx:id="topColumn" prefWidth="48.799986839294434" text="Top" />
-            <TableColumn fx:id="imageColumn" prefWidth="52.80002212524414" text=" " />
-            <TableColumn id="colection_column" fx:id="collectionColumn" prefWidth="239.9999542236328" text="Collection" />
-            <TableColumn fx:id="floorPriceColumn" minWidth="0.0" prefWidth="116.800048828125" text="Floor Price" />
-            <TableColumn fx:id="volumeColumn" prefWidth="103.99993896484375" text="Volume" />
-            <TableColumn fx:id="volumeChangeColumn" prefWidth="186.39996337890625" text="Volume Change" />
+            <TableColumn id="colection_column" fx:id="collectionColumn" prefWidth="277.3333549499512" text="Collection" />
+            <TableColumn fx:id="floorPriceColumn" minWidth="0.0" prefWidth="114.0" text="Floor Price" />
+            <TableColumn fx:id="volumeColumn" prefWidth="142.6666259765625" text="Volume" />
+            <TableColumn fx:id="volumeChangeColumn" prefWidth="156.66668701171875" text="Volume Change" />
          </columns>
       </TableView>
       <ComboBox id="choose_time" fx:id="trendingComboBox" layoutX="8.0" layoutY="21.0" prefHeight="29.0" prefWidth="98.0" promptText="1D" />

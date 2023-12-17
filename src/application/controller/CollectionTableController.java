@@ -32,8 +32,6 @@ public class CollectionTableController implements Initializable {
 	@FXML
 	TableColumn<Collection, Number> topColumn;
 	
-	@FXML
-	TableColumn<Collection, String> imageColumn;
 	
 	@FXML
 	TableColumn<Collection, String> collectionColumn;
@@ -57,52 +55,18 @@ public class CollectionTableController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Nhập dữ liệu của collectionTable
-		collectionList = FXCollections.observableArrayList(
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Test Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Test Ape Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Test Yacht Club", 33.78, 438.4, -10.1),
-				new Collection("Bored Ape Test Club", 33.78, 438.4, -10.1)
-				);
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 20));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 20));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 20));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 20));
+		collectionList = top1DCollectionList;
+		
 		// Đặt dữ liệu cho cột số thứ tự
         topColumn.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(collectionTable.getItems().indexOf(column.getValue()) + 1));
-		// Đặt giá trị cho cột ảnh
-	    imageColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("imageUrl"));
-
-	    // Tạo một cột tùy chỉnh để hiển thị ảnh
-	    imageColumn.setCellFactory(column -> {
-	        return new TableCell<Collection, String>() {
-	            private final ImageView imageView = new ImageView();
-	            {
-	                // Thiết lập kích thước hình ảnh (tùy chọn)
-	                imageView.setFitWidth(25);
-	                imageView.setFitHeight(25);
-	            }
-
-	            @Override
-	            protected void updateItem(String item, boolean empty) {
-	                super.updateItem(item, empty);
-
-	                if (item == null || empty) {
-	                    // Nếu dữ liệu rỗng, đặt ô cell thành trống
-	                    setGraphic(null);
-	                } else {
-	                    // Nếu có dữ liệu, tải và hiển thị ảnh từ đường dẫn URL
-	                    Image image = new Image(item);
-	                    imageView.setImage(image);
-	                    setGraphic(imageView);
-	                }
-	            }
-	        };
-	    });
-	    collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("collection"));
+		
+	    collectionColumn.setCellValueFactory(new PropertyValueFactory<Collection, String>("name"));
 		floorPriceColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("floorPrice"));
-		volumeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volume"));
+		volumeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeNative"));
 		volumeChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
 		collectionTable.setItems(collectionList);
 		collectionTable.setOnMouseClicked(event -> {
@@ -115,21 +79,7 @@ public class CollectionTableController implements Initializable {
 			}
 		});	
 		
-		//set màu nền cho collectionTable 
-//		 collectionTable.setRowFactory(tv -> {
-//	            TableRow<String> row = new TableRow<>();
-//	            row.setStyle("-fx-background-color: transparent;");
-//	            return row;
-//	        });
-		
-//		collectionTable.setRowFactory(tv -> new TableRow<>() {
-//            @Override
-//            protected void updateRow(String item, boolean empty) {
-//                super.updateItem(item, empty);
-//                setText(item);
-//                setStyle("-fx-background-color: transparent;");
-//            }
-//        });
+
 		
 		// set action to trendingComboBox
 		trendingComboBox.setItems(comboBoxList);
@@ -138,48 +88,22 @@ public class CollectionTableController implements Initializable {
 			// thay đổi collectionTable theo trending
 			  //Trending 1H
 			if(trendingComboBox.getValue().equals("1H")) {
-				collectionList = FXCollections.observableArrayList(
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1)
-				);
+				collectionList = top1HCollectionList;
 			}
 			
 			  //Trending 1D
 			if(trendingComboBox.getValue().equals("1D")) {
-				collectionList = FXCollections.observableArrayList(
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1)
-				);
+				collectionList = top1DCollectionList;
 			}
 			
 			  //Trending 7D
 			if(trendingComboBox.getValue().equals("7D")) {
-				collectionList = FXCollections.observableArrayList(
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1)
-				);
+				collectionList = top7DCollectionList;
 			}
 			
 			  //Trending 30D
 			if(trendingComboBox.getValue().equals("30D")) {
-				collectionList = FXCollections.observableArrayList(
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1),
-						new Collection("Bored Ape Yacht Club", 33.78, 438.4, -10.1)
-				);
+				collectionList = top30DCollectionList;
 			}
 			collectionTable.setItems(collectionList);
 		});
