@@ -1,0 +1,19 @@
+#pane_border_all {
+	-fx-background-color: #FFFFFF;
+}
+#pane_border_tweet {
+	-fx-background-color: #F2F2F2;
+	-fx-background-radius: 12px;
+}
+#tweet_name{
+	-fx-font-family: "Roboto Serif", san-serif;
+	-fx-text-fill: black;
+	-fx-font-weight: bold;
+	-fx-font-size: 20px;
+}
+
+#text{
+	-fx-font-family: "Roboto Serif", san-serif;
+	-fx-text-fill: black;
+	-fx-font-size: 15px;
+}
