@@ -9,9 +9,11 @@ import application.views.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 public class MainController implements Initializable{
+
 	@FXML
 	private BorderPane app_border_pane;
 	
