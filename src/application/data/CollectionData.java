@@ -18,7 +18,6 @@ import application.models.Collection;
 import javafx.scene.image.Image;
 
 public class CollectionData {
-    private static String apiKey = "f94465cb-3d33-4f60-b46c-4bbdb2bcf617"; 
 	public static void main(String[] args) {
 		List<Collection> trendingCollections= getTrendingCollections("POLYGON", "H1", 10);
 		for (Collection collection : trendingCollections) {

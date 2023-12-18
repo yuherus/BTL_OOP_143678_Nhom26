@@ -4,8 +4,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="502.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-	 	<fx:include layoutX="120.0" layoutY="30.0" source="CollectionTable.fxml" translateX="10.0" translateY="10.0" />
+<AnchorPane prefHeight="502.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AllCollectionController">
+	 	<fx:include fx:id="collectionTablePane" layoutX="120.0" layoutY="30.0" source="CollectionTable.fxml" translateX="10.0" translateY="10.0" />
    <Text layoutX="143.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All NFT Collections" wrappingWidth="315.89517974853516">
       <font>
          <Font name="System Bold" size="18.0" />

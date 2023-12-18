@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
@@ -11,20 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="632.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SearchController">
-   <TabPane layoutX="70.0" layoutY="28.0" prefHeight="575.0" prefWidth="840.0" tabClosingPolicy="UNAVAILABLE">
+<AnchorPane prefHeight="632.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SearchController">
+   <TabPane layoutX="86.0" layoutY="96.0" prefHeight="521.0" prefWidth="894.0" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Collection">
          <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="840.0">
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="876.0">
                   <children>
-                  	 <fx:include source="CollectionTable.fxml" translateX="70.0" translateY="70.0" />
-                     <ComboBox layoutX="167.0" layoutY="84.0" prefHeight="25.0" prefWidth="106.0" />
-                     <Button layoutX="362.0" layoutY="499.0" mnemonicParsing="false" text="View all collections">
-                        <graphic>
-                           <Label text="Label" />
-                        </graphic></Button>
-                     <Label id="Keyword" fx:id="labelKeyWord" layoutX="328.0" layoutY="40.0" stylesheets="@../styles/Search.css" text="Search results for &quot;key word&quot;" />
+                  	 <fx:include layoutY="-50.0" source="CollectionTable.fxml" translateX="70.0" translateY="70.0" />
                   </children>
                </AnchorPane>
          </content>
@@ -33,147 +26,76 @@
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="793.0">
                   <children>
-                     <VBox id="Box" layoutX="60.0" layoutY="58.0" prefHeight="398.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
-                        <children>
-                           <AnchorPane id="Anchor1" prefHeight="95.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                     <ScrollPane prefHeight="549.0" prefWidth="894.0">
+                        <content>
+                           <AnchorPane prefHeight="535.0" prefWidth="881.0">
                               <children>
-                                 <ImageView fitHeight="44.0" fitWidth="59.0" layoutX="33.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="138.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bored Ape Yatch Club NFT giveaway 20$ Bored Ape Yatch Club NFT giveaway 20$ Bored Ape Yatch ..." />
-                              </children></AnchorPane>
-                           <AnchorPane id="Anchor2" prefHeight="95.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="34.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="207.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                                 <Text layoutX="328.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" />
-                                 <Text layoutX="207.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" wrappingWidth="61.11785888671875" />
-                              </children></AnchorPane>
-                           <AnchorPane id="Anchor3" prefHeight="101.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="39.0" fitWidth="59.0" layoutX="37.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="206.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="38.8033447265625" />
-                                 <Text layoutX="204.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
-                                 <Text layoutX="327.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" wrappingWidth="64.7943115234375" />
-                              </children></AnchorPane>
-                           <AnchorPane id="Anchor4" prefHeight="107.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="209.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                                 <Text layoutX="341.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" />
-                                 <Text layoutX="203.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
-                              </children></AnchorPane>
-                        </children>
-                     </VBox>
-                     <Button layoutX="364.0" layoutY="473.0" mnemonicParsing="false" text="View more tweets" />
+                                 <VBox id="Box" layoutX="81.0" layoutY="69.0" prefHeight="398.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                                    <children>
+                                       <AnchorPane id="Anchor1" prefHeight="95.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                                          <children>
+                                             <ImageView fitHeight="44.0" fitWidth="59.0" layoutX="33.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Text layoutX="138.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bored Ape Yatch Club NFT giveaway 20$ Bored Ape Yatch Club NFT giveaway 20$ Bored Ape Yatch ..." />
+                                          </children>
+                                       </AnchorPane>
+                                       <AnchorPane id="Anchor2" prefHeight="95.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                                          <children>
+                                             <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="34.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Text layoutX="207.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                                             <Text layoutX="328.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" />
+                                             <Text layoutX="207.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" wrappingWidth="61.11785888671875" />
+                                          </children>
+                                       </AnchorPane>
+                                       <AnchorPane id="Anchor3" prefHeight="101.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                                          <children>
+                                             <ImageView fitHeight="39.0" fitWidth="59.0" layoutX="37.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Text layoutX="206.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="38.8033447265625" />
+                                             <Text layoutX="204.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
+                                             <Text layoutX="327.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" wrappingWidth="64.7943115234375" />
+                                          </children>
+                                       </AnchorPane>
+                                       <AnchorPane id="Anchor4" prefHeight="107.0" prefWidth="719.0" stylesheets="@../styles/Search.css">
+                                          <children>
+                                             <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
+                                                </image>
+                                             </ImageView>
+                                             <Text layoutX="209.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                                             <Text layoutX="341.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@username" />
+                                             <Text layoutX="203.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" />
+                                          </children>
+                                       </AnchorPane>
+                                    </children>
+                                 </VBox>
+                              </children>
+                           </AnchorPane>
+                        </content>
+                     </ScrollPane>
                   </children>
                </AnchorPane>
          </content>
        </Tab>
          <Tab text="Blog">
            <content>
-             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                  <children>
-                     <VBox id="VB1" layoutX="66.0" layoutY="103.0" prefHeight="300.0" prefWidth="268.0" stylesheets="@../styles/Search.css">
-                        <children>
-                           <AnchorPane id="AnchorB1" prefHeight="105.0" prefWidth="253.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="43.0" fitWidth="77.0" layoutX="7.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="88.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizens of Mantle have landed." wrappingWidth="165.48046875" />
-                                 <Text layoutX="88.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <Text layoutX="192.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rarible Blog" />
-                              </children>
-                           </AnchorPane>
-                           <AnchorPane id="AnchorB2" prefHeight="96.0" prefWidth="232.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <Text layoutX="99.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <ImageView fitHeight="45.0" fitWidth="76.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="101.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know ..." wrappingWidth="152.162109375" />
-                                 <Text layoutX="185.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Binance Blog" />
-                              </children>
-                           </AnchorPane>
-                           <AnchorPane prefHeight="104.0" prefWidth="219.0">
-                              <children>
-                                 <ImageView fitHeight="43.0" fitWidth="78.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="104.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know ..." wrappingWidth="169.05731201171875" />
-                                 <Text layoutX="102.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <Text layoutX="189.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rarible Blog" />
-                              </children>
-                           </AnchorPane>
-                        </children>
-                     </VBox>
-                     <VBox id="VB2" layoutX="365.0" layoutY="104.0" prefHeight="298.0" prefWidth="282.0" stylesheets="@../styles/Search.css">
-                        <children>
-                           <AnchorPane id="AnchorB3" prefHeight="92.0" prefWidth="209.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="51.0" fitWidth="66.0" layoutX="24.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="95.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know ..." wrappingWidth="172.390625" />
-                                 <Text layoutX="95.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <Text layoutX="205.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rarible Blog" />
-                              </children>
-                           </AnchorPane>
-                           <AnchorPane id="AnchorB4" minHeight="0.0" minWidth="0.0" prefHeight="101.0" prefWidth="295.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="43.0" fitWidth="66.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="100.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know ..." wrappingWidth="167.4954833984374" />
-                                 <Text layoutX="100.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <Text layoutX="204.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rarible Blog" />
-                              </children>
-                           </AnchorPane>
-                           <AnchorPane id="AnchorB2" prefHeight="103.0" prefWidth="209.0" stylesheets="@../styles/Search.css">
-                              <children>
-                                 <ImageView fitHeight="43.0" fitWidth="66.0" layoutX="32.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                       <Image url="@../images/62545162b2e07568b0110187_FEATURED_IMAGE-nfts-myths-misconceptions.png" />
-                                    </image>
-                                 </ImageView>
-                                 <Text layoutX="106.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know ..." wrappingWidth="167.72393798828125" />
-                                 <Text layoutX="106.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aug 29, 2023" />
-                                 <Text layoutX="205.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Binance Blog" />
-                              </children>
-                           </AnchorPane>
-                        </children>
-                     </VBox>
-                     <Button id="AllBlogs" layoutX="308.0" layoutY="433.0" mnemonicParsing="false" stylesheets="@../styles/Search.css" text="View all blogs" textAlignment="CENTER" />
-                  </children></AnchorPane>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
            </content>
          </Tab>
      </tabs>
    </TabPane>
+   <Label id="Keyword" fx:id="labelKeyWord" layoutX="425.0" layoutY="39.0" stylesheets="@../styles/Search.css" text="Search results for &quot;key word&quot;" />
 
  
 </AnchorPane>

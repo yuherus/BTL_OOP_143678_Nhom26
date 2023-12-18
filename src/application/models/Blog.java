@@ -1,5 +1,8 @@
 package application.models;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Blog {
 	private String title;
 	private String description;
@@ -63,5 +66,26 @@ public class Blog {
 		this.imageUrl = imageUrl;
 	}
 	
+		public LocalDate getLocalDate() {
+	        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+
+	        try {
+	            return LocalDate.parse(postDate, formatter1);
+	        } catch (Exception e1) {
+	            try {
+	                return LocalDate.parse(postDate, formatter2);
+	            } catch (Exception e2) {
+	                return null;
+	            }
+	        }
+	    }
+		@Override
+		public String toString() {
+			return "Blog [title=" + title + ", description=" + description + ", author=" + author + ", content="
+					+ content + ", postDate=" + postDate + ", url=" + url + ", imageUrl=" + imageUrl + "]";
+		}
+
+
 	
 }

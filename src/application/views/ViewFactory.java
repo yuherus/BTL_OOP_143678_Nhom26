@@ -1,5 +1,6 @@
 package application.views;
 
+import application.controller.BlogController;
 import application.controller.CollectionController;
 import application.controller.SearchController;
 import application.data.CollectionData;
@@ -11,12 +12,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ViewFactory {
 	private ScrollPane appView;
 	private AnchorPane allCollectionView;
 	private AnchorPane homeView;
+	private VBox allBLogView;
+	private AnchorPane blogView;
 	
 	public ViewFactory() {}
 	
@@ -68,17 +72,32 @@ public class ViewFactory {
 		return homeView;
 	}
 	
-	public Pane getAllBlogView() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Bloglist.fxml"));
-			Pane homeView = loader.load();
-			return homeView;
+	public VBox getAllBlogView() {
+		if (allBLogView == null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Bloglist.fxml"));
+				allBLogView = loader.load();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return allBLogView;
 	}
+	
+	public AnchorPane getBlogView(String url) {
+		if (blogView == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Blog.fxml"));
+                blogView = loader.load();
+                BlogController blogController = loader.getController();
+                blogController.setBlogUrl(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+		}
+        return blogView;
+    }
 	
 	public AnchorPane getSearch(String textField) {
 		try {

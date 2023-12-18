@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.StackPane?>
-
-<StackPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</StackPane>
+ 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+ 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1066" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.BlogController">
+   <children>
+      <WebView fx:id="webView" layoutX="21.0" layoutY="38.0" prefHeight="800" prefWidth="1022" />
+   </children>
+</AnchorPane>
 

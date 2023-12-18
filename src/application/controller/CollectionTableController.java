@@ -54,13 +54,6 @@ public class CollectionTableController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//Nhập dữ liệu của collectionTable
-		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 20));
-		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 20));
-		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 20));
-		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 20));
-		collectionList = top1DCollectionList;
-		
 		// Đặt dữ liệu cho cột số thứ tự
         topColumn.setCellValueFactory(column -> new ReadOnlyObjectWrapper<>(collectionTable.getItems().indexOf(column.getValue()) + 1));
 		
@@ -68,7 +61,7 @@ public class CollectionTableController implements Initializable {
 		floorPriceColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("floorPrice"));
 		volumeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeNative"));
 		volumeChangeColumn.setCellValueFactory(new PropertyValueFactory<Collection, Double>("volumeChange"));
-		collectionTable.setItems(collectionList);
+//		collectionTable.setItems(collectionList);
 		collectionTable.setOnMouseClicked(event -> {
 			Collection selectedCollection = collectionTable.getSelectionModel().getSelectedItem();
 			if (selectedCollection != null) {
@@ -79,37 +72,65 @@ public class CollectionTableController implements Initializable {
 			}
 		});	
 		
-
 		
-		// set action to trendingComboBox
+
+	} 	
+		
+	public void setAllCollectionList() {
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 5000));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 5000));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 5000));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 5000));
+		collectionList = top1DCollectionList;
 		trendingComboBox.setItems(comboBoxList);
 		trendingComboBox.setOnAction(event -> {
 			trendingComboBox.setPromptText(trendingComboBox.getValue());
-			// thay đổi collectionTable theo trending
-			  //Trending 1H
+
 			if(trendingComboBox.getValue().equals("1H")) {
 				collectionList = top1HCollectionList;
 			}
-			
-			  //Trending 1D
 			if(trendingComboBox.getValue().equals("1D")) {
 				collectionList = top1DCollectionList;
 			}
-			
-			  //Trending 7D
+
 			if(trendingComboBox.getValue().equals("7D")) {
 				collectionList = top7DCollectionList;
 			}
-			
-			  //Trending 30D
+
 			if(trendingComboBox.getValue().equals("30D")) {
 				collectionList = top30DCollectionList;
 			}
 			collectionTable.setItems(collectionList);
 		});
-
-	} 	
-		
+	}
 	
+	public void setTopCollectionList() {
+		//Nhập dữ liệu của collectionTable
+			ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 20));
+			ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 20));
+			ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 20));
+			ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 20));
+			collectionList = top1DCollectionList;
+			trendingComboBox.setItems(comboBoxList);
+			trendingComboBox.setOnAction(event -> {
+				trendingComboBox.setPromptText(trendingComboBox.getValue());
+
+				if(trendingComboBox.getValue().equals("1H")) {
+					collectionList = top1HCollectionList;
+				}
+				if(trendingComboBox.getValue().equals("1D")) {
+					collectionList = top1DCollectionList;
+				}
+
+				if(trendingComboBox.getValue().equals("7D")) {
+					collectionList = top7DCollectionList;
+				}
+
+				if(trendingComboBox.getValue().equals("30D")) {
+					collectionList = top30DCollectionList;
+				}
+				collectionTable.setItems(collectionList);
+			});
+	}
 	
 }
