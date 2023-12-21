@@ -88,8 +88,8 @@ public class BlogData {
 	}
 
 //	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
-	public static List<Blog> getBlogDataByKeyWord(String keyword, int limit) {
-		List<Blog> blogList = new ArrayList<>();
+	public static ArrayList<Blog> getBlogDataByKeyWord(String keyword, int limit) {
+		ArrayList<Blog> blogList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/blog.json");
 
 		try {

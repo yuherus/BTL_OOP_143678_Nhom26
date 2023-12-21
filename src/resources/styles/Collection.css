@@ -38,7 +38,7 @@
 }
 #Anchor6{
 	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
-    -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+    -fx-border-width: 1 0 0 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
 }
 #Anchor7{
 	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
@@ -58,4 +58,9 @@
 #Line{
 	-fx-border-color: #111; /* Màu của đường gạch */
     -fx-border-width: 0 0 1 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
+}
+
+#BlogPane{
+	  -fx-border-color: #B4B4B4; /* Màu của đường gạch */
+    -fx-border-width: 1 0 0 0; /* Độ dày của đường gạch (1px) và vị trí (bottom) */
 }

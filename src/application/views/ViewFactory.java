@@ -21,6 +21,7 @@ public class ViewFactory {
 	private AnchorPane homeView;
 	private VBox allBLogView;
 	private AnchorPane blogView;
+	private AnchorPane allTweetView;
 	
 	public ViewFactory() {}
 	
@@ -85,6 +86,19 @@ public class ViewFactory {
 		return allBLogView;
 	}
 	
+	public AnchorPane getAllTweetView() {
+		if (allTweetView == null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/TweetList.fxml"));
+				allTweetView = loader.load();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return allTweetView;
+	}
+	
 	public AnchorPane getBlogView(String url) {
 		if (blogView == null) {
             try {
@@ -106,7 +120,6 @@ public class ViewFactory {
 			SearchController searchController = loader.getController();
 			searchController.setLabel(textField);
 			return searchView;
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
