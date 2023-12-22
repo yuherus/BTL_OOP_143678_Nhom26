@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -21,27 +20,23 @@
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-            <Label id="logo" layoutX="48.0" layoutY="5.0" prefHeight="36.0" prefWidth="117.0" text="LOGO" textFill="WHITE">
+            <Label id="logo" layoutX="48.0" layoutY="5.0" prefHeight="36.0" text="GROUP 26" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <TextField id="search" fx:id="textFieldSearch" alignment="CENTER" layoutX="252.0" layoutY="10.0" prefHeight="27.0" prefWidth="316.0" promptText="Search for NFTs or Blog">
+      <TextField id="search" fx:id="textFieldSearch" alignment="CENTER" layoutX="206.0" layoutY="10.0" prefHeight="27.0" prefWidth="377.0" promptText="Search for NFTs or Blog">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button id="header_nft" alignment="CENTER" layoutX="628.0" layoutY="8.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="62.0" styleClass="header_button" text="NFTs" textFill="WHITE" />
-      <Button id="header_blog" alignment="CENTER" contentDisplay="CENTER" layoutX="548.0" layoutY="8.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="62.0" styleClass="header_button" text="Blog" textFill="WHITE" />
-      <Button id="header_back" layoutX="900.0" layoutY="8.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="72.0" styleClass="header_button" text="Back" textFill="WHITE" />
+      <Button id="header_nft" fx:id="allNFT" alignment="CENTER" layoutX="686.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="NFTs" textFill="WHITE" />
+      <Button id="header_blog" fx:id="allBlog" alignment="CENTER" contentDisplay="CENTER" layoutX="755.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="Blogs" textFill="WHITE" />
+      <Button id="header_back" alignment="CENTER" contentDisplay="CENTER" layoutX="912.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="62.0" styleClass="header_button" text="Back" textAlignment="CENTER" textFill="WHITE" />
       <ComboBox id="menu_box" fx:id="header_combobox" layoutX="988.0" layoutY="8.0" prefHeight="31.0" prefWidth="50.0" styleClass="header_button" />
-      <Button fx:id="btnSearch" layoutX="428.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchChange" prefHeight="27.0" prefWidth="31.0" style="-fx-border-radius: 10px;" />
-      <FontAwesomeIconView id="menu.icon" fill="#696868" glyphName="SEARCH" layoutX="437.0" layoutY="28.0" size="14.0" text="">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </FontAwesomeIconView>
+      <Button fx:id="btnSearch" layoutX="590.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchChange" prefHeight="27.0" prefWidth="34.0" scaleX="0.75" scaleY="0.75" style="-fx-border-radius: 10px; -fx-padding: 0;" />
+      <Button id="header_blog" fx:id="allTweet" alignment="CENTER" contentDisplay="CENTER" layoutX="830.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="Tweets" textFill="WHITE" />
    </children>
 </Pane>

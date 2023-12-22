@@ -1,5 +1,6 @@
 package application.data;
 
+<<<<<<< HEAD
 import application.models.Tweet;
 
 import java.io.BufferedWriter;
@@ -114,4 +115,27 @@ public class GetTweetData {
                 .GET()
                 .build();
     }
+=======
+public class GetTweetData {
+	
+	
+
+	public static boolean containsKeyword(String[] baseDataArray, String keyword) {
+		// Convert the keyword to lowercase for case-insensitive comparison
+		String lowercasedKeyword = keyword.toLowerCase();
+
+		// Iterate through each string in the array
+		for (String baseData : baseDataArray) {
+			// Convert the current base data to lowercase for comparison
+			String lowercasedBaseData = baseData.toLowerCase();
+
+			// Check if the lowercased base data contains the lowercased keyword
+			if (lowercasedBaseData.contains(lowercasedKeyword)) {
+				return true; // Return true if any string contains the keyword
+			}
+		}
+
+		return false; // Return false if none of the strings contain the keyword
+	}
+>>>>>>> fc86d20838d9bb1d377d25cb75d71f58d045a67c
 }

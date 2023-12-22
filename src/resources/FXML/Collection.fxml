@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -68,54 +69,14 @@
                </children>
             </AnchorPane>
             <Pane prefHeight="6.0" prefWidth="900.0" style="-fx-background-color: #333;" />
-            <AnchorPane prefHeight="335.0" prefWidth="1066.0">
+            <HBox alignment="CENTER" prefHeight="335.0" prefWidth="1066.0" spacing="200.0">
                <children>
-                  <VBox id="Box2" layoutX="102.0" layoutY="19.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
+                  <VBox id="Box2" fx:id="relatedBlog" layoutX="102.0" layoutY="19.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
                      <children>
-                        <Hyperlink id="Link2" prefHeight="34.0" prefWidth="124.0" stylesheets="@../styles/Collection.css" text="Related Blog" />
-                        <AnchorPane id="Anchor5" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizens of Mantle have landed." wrappingWidth="227.619140625" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor6" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="227.619140625" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor7" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="91.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know About ..." wrappingWidth="227.619140625" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor8" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="92.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hot Wheels NFT Garage: All You Need to Know About ..." wrappingWidth="227.619140625" />
-                           </children>
-                        </AnchorPane>
+                        <Hyperlink id="Link2" prefHeight="34.0" prefWidth="347.0" stylesheets="@../styles/Collection.css" text="Related Blog" />
                      </children>
                   </VBox>
-                  <VBox id="Box1" fx:id="Box1" layoutX="631.0" layoutY="19.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
+                  <VBox id="Box1" fx:id="relatedTweet" layoutX="631.0" layoutY="19.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
                      <children>
                         <Hyperlink id="Link1" alignment="CENTER" prefHeight="33.0" prefWidth="129.0" stylesheets="@../styles/Collection.css" text="Related Tweet" />
                         <AnchorPane id="Anchor1" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
@@ -161,7 +122,7 @@
                      </children>
                   </VBox>
                </children>
-            </AnchorPane>
+            </HBox>
          </children>
       </VBox>
    </children>
