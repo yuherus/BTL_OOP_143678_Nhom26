@@ -1,6 +1,5 @@
 package application.data;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,8 +78,5 @@ public class TweetData {
         }
         return hashtags;
     }
-=======
-public class TweetData {
 
->>>>>>> fc86d20838d9bb1d377d25cb75d71f58d045a67c
 }
