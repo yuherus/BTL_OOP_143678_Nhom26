@@ -22,7 +22,6 @@ public class ViewFactory {
 	private AnchorPane allCollectionView;
 	private AnchorPane homeView;
 	private VBox allBLogView;
-	private AnchorPane blogView;
 	private AnchorPane allTweetView;	
 	
 	public ViewFactory() {}
@@ -102,7 +101,7 @@ public class ViewFactory {
 	}
 	
 	public AnchorPane getBlogView(String url) {
-		if (blogView == null) {
+		AnchorPane blogView = null;
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Blog.fxml"));
                 blogView = loader.load();
@@ -111,7 +110,6 @@ public class ViewFactory {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-		}
         return blogView;
     }
 	
@@ -142,42 +140,6 @@ public class ViewFactory {
 	}
 	
 	
-	public void showAllCollectionView(Stage stage) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));
-		changeScene(loader,stage);
-	}
-	
-	public void changeScene(FXMLLoader loader, Stage stage) {
-		Scene scene = null;
-		try {
-			scene = new Scene(loader.load());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		stage.setScene(scene);
-		stage.setTitle("App");
-		stage.show();
-	}
-	
-	public void showCollection(Stage stage, Collection collection) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
-		Scene scene = null;
-		try {
-			scene = new Scene(loader.load());
-			CollectionController collectionController = loader.getController();
-			collectionController.setCollectionData(collection);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		stage.setScene(scene);
-		stage.setTitle("Colection");
-		stage.show();
-	}
-	
-	public void showSearch(Stage stage) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Search.fxml"));
-		changeScene(loader,stage);
-	}
 	
 
 }
