@@ -3,8 +3,10 @@ package application.views;
 import application.controller.BlogController;
 import application.controller.CollectionController;
 import application.controller.SearchController;
+import application.controller.TweetController;
 import application.data.CollectionData;
 import application.models.Collection;
+import application.models.Tweet;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -20,8 +22,7 @@ public class ViewFactory {
 	private AnchorPane allCollectionView;
 	private AnchorPane homeView;
 	private VBox allBLogView;
-	private AnchorPane blogView;
-	private AnchorPane allTweetView;
+	private AnchorPane allTweetView;	
 	
 	public ViewFactory() {}
 	
@@ -100,7 +101,7 @@ public class ViewFactory {
 	}
 	
 	public AnchorPane getBlogView(String url) {
-		if (blogView == null) {
+		AnchorPane blogView = null;
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Blog.fxml"));
                 blogView = loader.load();
@@ -109,7 +110,6 @@ public class ViewFactory {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-		}
         return blogView;
     }
 	
@@ -124,44 +124,19 @@ public class ViewFactory {
 			e.printStackTrace();
 		}
 		return null;
-}
-	
-	public void showAllCollectionView(Stage stage) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));
-		changeScene(loader,stage);
 	}
 	
-	public void changeScene(FXMLLoader loader, Stage stage) {
-		Scene scene = null;
-		try {
-			scene = new Scene(loader.load());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		stage.setScene(scene);
-		stage.setTitle("App");
-		stage.show();
+	public AnchorPane getTweetView(Tweet tweet) {
+		AnchorPane tweetView = null;
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Tweet.fxml"));
+				tweetView = loader.load();
+				TweetController tweetController = loader.getController();
+				tweetController.setTweetData(tweet);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return tweetView;
 	}
-	
-	public void showCollection(Stage stage, Collection collection) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Collection.fxml"));
-		Scene scene = null;
-		try {
-			scene = new Scene(loader.load());
-			CollectionController collectionController = loader.getController();
-			collectionController.setCollectionData(collection);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		stage.setScene(scene);
-		stage.setTitle("Colection");
-		stage.show();
-	}
-	
-	public void showSearch(Stage stage) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Search.fxml"));
-		changeScene(loader,stage);
-	}
-	
 
 }

@@ -67,8 +67,7 @@ public class CollectionTableController implements Initializable {
 			if (selectedCollection != null) {
 				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
-				ViewFactory viewFactory = new ViewFactory();
-				appBorderPane.setCenter(viewFactory.getCollectionView(selectedCollection));
+				appBorderPane.setCenter(Model.getInstance().getViewFactory().getCollectionView(selectedCollection));
 			}
 		});	
 		

@@ -7,9 +7,11 @@ import java.util.ResourceBundle;
 
 import application.data.BlogData;
 import application.data.CollectionData;
+import application.data.TweetData;
 import application.models.Blog;
 import application.models.Collection;
 import application.models.Model;
+import application.models.Tweet;
 import application.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +26,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -42,6 +45,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -64,6 +68,9 @@ public class HomeController implements Initializable{
 	
 	@FXML
 	private HBox newestBlog;
+	
+	@FXML
+	private HBox hotestTweet;
 	
 	@FXML
 	private AnchorPane collectionTablePane;
@@ -129,23 +136,18 @@ public class HomeController implements Initializable{
 			appBorderPane.setCenter(Model.getInstance().getViewFactory().getAllBlogView());
 		});
 		
+		viewMoreTweets.setOnAction(event -> {
+			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
+			appBorderPane.setCenter(Model.getInstance().getViewFactory().getAllTweetView());
+		});
 		//Nhập dữ liệu cho tagList
-		tagListData = FXCollections.observableArrayList(
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods",
-			"#degods"
-		);
+		ArrayList<String> hotTagList = new ArrayList<>();
+		tagListData = FXCollections.observableArrayList(TweetData.mapToArrayList(TweetData.getTopHashtags(10), hotTagList));
 		tagList.setItems(tagListData);
 		
 		tagList.setOnMouseClicked(event ->{
-			
+			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
+			appBorderPane.setCenter(Model.getInstance().getViewFactory().getSearch(tagList.getSelectionModel().getSelectedItem()));
 		});
 		
 		tagList.setCellFactory(lv -> new ListCell<>() {
@@ -157,16 +159,25 @@ public class HomeController implements Initializable{
             }
         });
 		
+
 		BlogData blogData = new BlogData();
 		ArrayList<Blog> newestBlogList = blogData.getNewestPosts();
 		
-		ArrayList<VBox> vBoxList = createVBoxWithData(newestBlogList);
-		for (VBox vBox : vBoxList) {
+		TweetData tweetData = new TweetData();
+		ArrayList<Tweet> hotestTweetList = tweetData.getHotestTweets();
+		
+		ArrayList<VBox> vBoxBlogList = createVBoxBlogWithData(newestBlogList);
+		for (VBox vBox : vBoxBlogList) {
 			newestBlog.getChildren().add(vBox);
 		}        
+		
+		ArrayList<VBox> vBoxTweetList = createVBoxTweetWithData(hotestTweetList);
+		for (VBox vBox : vBoxTweetList) {
+			hotestTweet.getChildren().add(vBox);
+		} 
 	}
 	
-	private ArrayList<VBox> createVBoxWithData(ArrayList<Blog> newestBlogList) {
+	private ArrayList<VBox> createVBoxBlogWithData(ArrayList<Blog> newestBlogList) {
 		ArrayList<VBox> vBoxList = new ArrayList<>();
 		for (Blog blog : newestBlogList) {
 			VBox vBox = new VBox();
@@ -191,7 +202,7 @@ public class HomeController implements Initializable{
 	        dateLabel.setPrefWidth(150);
 	        dateLabel.setAlignment(Pos.CENTER_RIGHT);
 	  
-
+	       
 	        Label authorLabel = new Label(blog.getAuthor());
 	        FontAwesomeIconView userIcon = new FontAwesomeIconView();
 	        userIcon.setGlyphName("USER");
@@ -205,6 +216,57 @@ public class HomeController implements Initializable{
                 appBorderPane.setCenter(Model.getInstance().getViewFactory().getBlogView(blog.getUrl()));
             });
 	        vBoxList.add(vBox);
+		}
+		return vBoxList;
+	}
+	
+	private ArrayList<VBox> createVBoxTweetWithData(ArrayList<Tweet> hotestTweetList) {
+		ArrayList<VBox> vBoxList = new ArrayList<>();
+		for (Tweet tweet : hotestTweetList) {
+			 VBox vbox = new VBox();
+		        vbox.setSpacing(5);
+		        vbox.setPrefHeight(200.0);
+		        vbox.setPrefWidth(100.0);
+		        vbox.setAlignment(Pos.CENTER);
+		        
+		        // Image
+		        ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
+		        imageView.setFitHeight(150.0);
+		        imageView.setFitWidth(200.0);
+		        imageView.setPreserveRatio(true);
+
+		        // Tweet Name Label
+		        Label tweetNameLabel = new Label(tweet.getUser());
+		        tweetNameLabel.setAlignment(javafx.geometry.Pos.CENTER);
+
+		        // Tweet Account Label
+		        Label tweetAccountLabel = new Label("@"+tweet.getUserName());
+		        tweetAccountLabel.setAlignment(javafx.geometry.Pos.CENTER);
+
+		        // Tweet Text Label
+		        Label tweetTextLabel = new Label(tweet.getTweetText());
+		        tweetTextLabel.setPrefHeight(64.0);
+		        tweetTextLabel.setPrefWidth(148.0);
+		        tweetTextLabel.setWrapText(true);
+
+		        // Add components to VBox
+		        
+		        vbox.getChildren().addAll(imageView, tweetNameLabel, tweetAccountLabel, tweetTextLabel);
+		        VBox.setMargin(tweetNameLabel, new Insets(0, 0, 0, 0));
+		        VBox.setMargin(tweetAccountLabel, new Insets(-5, 0, 0, 0));
+		        vbox.setOnMouseClicked(event -> {
+		        	Stage popupStage = new Stage();
+		            popupStage.initModality(Modality.APPLICATION_MODAL);
+		            popupStage.setTitle("Tweet");
+
+		            // Set the FXML content to the pop-up stage
+		            Scene popupScene = new Scene(Model.getInstance().getViewFactory().getTweetView(tweet), 800, 500);
+		            popupStage.setScene(popupScene);
+
+		            // Show the pop-up stage
+		            popupStage.showAndWait();
+		        });
+		        vBoxList.add(vbox);
 		}
 		return vBoxList;
 	}

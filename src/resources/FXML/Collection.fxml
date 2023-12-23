@@ -79,46 +79,6 @@
                   <VBox id="Box1" fx:id="relatedTweet" layoutX="631.0" layoutY="19.0" prefHeight="298.0" prefWidth="345.0" style="-fx-border-width: 1px; -fx-border-color: #000;" stylesheets="@../styles/Collection.css">
                      <children>
                         <Hyperlink id="Link1" alignment="CENTER" prefHeight="33.0" prefWidth="129.0" stylesheets="@../styles/Collection.css" text="Related Tweet" />
-                        <AnchorPane id="Anchor1" prefHeight="71.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="85.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." wrappingWidth="227.619140625" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor2" prefHeight="70.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="84.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor3" prefHeight="70.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="86.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="Anchor4" prefHeight="69.0" prefWidth="343.0" stylesheets="@../styles/Collection.css">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/collection.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="88.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free #NFT Giveaway Derivatif Bored Ape ...." />
-                           </children>
-                        </AnchorPane>
                      </children>
                   </VBox>
                </children>

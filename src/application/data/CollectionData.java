@@ -62,6 +62,7 @@ public class CollectionData {
             return trendingCollections;
         }
 	}
+	
 	public static List<Collection> getCollectionBySearchWord(String SearchWord, int limit, String period ){
 		List<Collection> collectList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/collection"+period+".json");
@@ -74,19 +75,15 @@ public class CollectionData {
 				// Access individual fields of each object
 				String id = objectNode.get("id").asText();
 				double volumeNative = objectNode.get("volumeNative").asDouble();
-				String volumeNativeUnit = objectNode.get("volumeNativeUnit").toString();
+				String volumeNativeUnit = objectNode.get("volumeNativeUnit").asText();
 				double floorPrice = objectNode.get("floorPrice").asDouble();
-				String floorPriceUnit = objectNode.get("floorPriceUnit").toString();
+				String floorPriceUnit = objectNode.get("floorPriceUnit").asText();
 				double VolumeChange = objectNode.get("VolumeChange").asDouble();
-				String blockchain = objectNode.get("blockchain").toString();
-				String name = objectNode.get("name").toString();
+				String blockchain = objectNode.get("blockchain").asText();
+				String name = objectNode.get("name").asText();
 				String description = objectNode.get("description").toString();
-				String imageUrl;
-				if (objectNode.get("imageUrl").get(0) != null) {
-				imageUrl = objectNode.get("imageUrl").get(0).asText();
-				} else {
-				imageUrl = "/resources/images/Hinh-Nen-Trang-10.jpg";
-				}
+				String imageUrl = objectNode.get("imageUrl").asText();
+				
 				String[] baseDataNeedCheck = {name, blockchain, volumeNativeUnit,description};
 				for(String DNC:baseDataNeedCheck) {
 					boolean checkCondition = DNC.contains(SearchWord);

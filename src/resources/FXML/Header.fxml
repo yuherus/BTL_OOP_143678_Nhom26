@@ -32,10 +32,10 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button id="header_nft" fx:id="allNFT" alignment="CENTER" layoutX="686.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="NFTs" textFill="WHITE" />
+      <Button id="header_nft" fx:id="allNFT" alignment="CENTER" layoutX="682.0" layoutY="8.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="NFTs" textFill="WHITE" />
       <Button id="header_blog" fx:id="allBlog" alignment="CENTER" contentDisplay="CENTER" layoutX="755.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="Blogs" textFill="WHITE" />
-      <Button id="header_back" alignment="CENTER" contentDisplay="CENTER" layoutX="912.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="62.0" styleClass="header_button" text="Back" textAlignment="CENTER" textFill="WHITE" />
-      <ComboBox id="menu_box" fx:id="header_combobox" layoutX="988.0" layoutY="8.0" prefHeight="31.0" prefWidth="50.0" styleClass="header_button" />
+      <Button id="header_back" alignment="CENTER" contentDisplay="CENTER" layoutX="920.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="62.0" styleClass="header_button" text="Back" textAlignment="CENTER" textFill="WHITE" />
+      <ComboBox id="menu_box" fx:id="header_combobox" layoutX="1002.0" layoutY="8.0" prefHeight="31.0" prefWidth="50.0" styleClass="header_button" />
       <Button fx:id="btnSearch" layoutX="590.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchChange" prefHeight="27.0" prefWidth="34.0" scaleX="0.75" scaleY="0.75" style="-fx-border-radius: 10px; -fx-padding: 0;" />
       <Button id="header_blog" fx:id="allTweet" alignment="CENTER" contentDisplay="CENTER" layoutX="830.0" layoutY="7.0" mnemonicParsing="false" prefHeight="32.0" styleClass="header_button" text="Tweets" textFill="WHITE" />
    </children>

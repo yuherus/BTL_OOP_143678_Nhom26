@@ -24,7 +24,6 @@ public class BlogData implements PostData<Blog> {
 		}
 	}
 	
-	@Override
 	public ArrayList<Blog> getNewestPosts(){
 		ArrayList<Blog> blogList = this.getAllPosts();
 		Collections.sort(blogList, Comparator.comparing(Blog::getLocalDate));
@@ -66,7 +65,8 @@ public class BlogData implements PostData<Blog> {
 		return blogList;
 	}
 	
-	public List<Blog> getRelatedBlogs(Collection collection) {
+	@Override
+	public List<Blog> getRelatedPosts(Collection collection) {
 		List<Blog> relatedBlogs = new ArrayList<>();
 		relatedBlogs = this.getPostDataByKeyWord(collection.getName(),4);
 		return relatedBlogs;
