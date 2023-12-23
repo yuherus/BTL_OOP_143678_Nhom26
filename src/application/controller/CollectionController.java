@@ -3,8 +3,10 @@ package application.controller;
 import java.util.ArrayList;
 
 import application.data.BlogData;
+import application.data.TweetData;
 import application.models.Blog;
 import application.models.Collection;
+import application.models.Tweet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -55,9 +57,21 @@ public class CollectionController extends Controller{
 		address.setText(collection.getId().substring(collection.getId().indexOf(":")+1));
 		
 		ArrayList<Blog> relatedBlogList = BlogData.getBlogDataByKeyWord(collection.getName(), 4);
+		if (relatedBlogList.size() < 4) {
+			relatedBlogList.addAll(BlogData.getBlogDataByKeyWord(collection.getBlockchain(), 4 - relatedBlogList.size()));
+		}
 		for (Blog blog : relatedBlogList) {
             AnchorPane blogAnchorPane = createBlogAnchorPane(blog);
             relatedBlog.getChildren().add(blogAnchorPane);
+        }
+		
+		ArrayList<Tweet> relatedTweetList = TweetData.getTweetDataByKeyWord(collection.getName(), 4);
+		if (relatedTweetList.size() < 4) {
+			relatedTweetList.addAll(TweetData.getTweetDataByKeyWord(collection.getBlockchain(), 4 - relatedTweetList.size()));
+		}
+		for (Tweet tweet : relatedTweetList) {
+            AnchorPane tweetAnchorPane = createTweetAnchorPane(tweet);
+            relatedTweet.getChildren().add(tweetAnchorPane);
         }
 	}
 	
@@ -92,6 +106,41 @@ public class CollectionController extends Controller{
         dateText.setPrefWidth(70);
 
         anchorPane.getChildren().addAll(imageView, titleText, descriptionText, dateText);
+        return anchorPane;
+    }
+	
+	private AnchorPane createTweetAnchorPane(Tweet tweet) {
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setId("BlogPane"); 
+        anchorPane.setPrefWidth(343.0);
+        anchorPane.setPrefHeight(71.0);
+
+        // Create ImageView
+        ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
+        imageView.setFitHeight(43.0);
+        imageView.setFitWidth(50.0);
+        imageView.setLayoutX(14.0);
+        imageView.setLayoutY(12.0);
+        imageView.setPreserveRatio(true);
+
+        // Create Labels
+        Label usernameLabel = new Label("@"+tweet.getUserName());
+        usernameLabel.setLayoutX(80.0);
+        usernameLabel.setLayoutY(7.0);
+
+        Label nameLabel = new Label(tweet.getUser());
+        nameLabel.setLayoutX(81.0);
+        nameLabel.setLayoutY(25.0);
+
+        Label textLabel = new Label(tweet.getTweetText());
+        textLabel.setLayoutX(80.0);
+        textLabel.setLayoutY(42.0);
+        textLabel.setPrefHeight(20.0);
+        textLabel.setPrefWidth(245.0);
+
+        // Add children to AnchorPane
+        anchorPane.getChildren().addAll(imageView, usernameLabel, nameLabel, textLabel);
+
         return anchorPane;
     }
 }

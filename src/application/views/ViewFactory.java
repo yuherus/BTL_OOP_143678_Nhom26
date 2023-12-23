@@ -3,8 +3,10 @@ package application.views;
 import application.controller.BlogController;
 import application.controller.CollectionController;
 import application.controller.SearchController;
+import application.controller.TweetController;
 import application.data.CollectionData;
 import application.models.Collection;
+import application.models.Tweet;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -21,7 +23,7 @@ public class ViewFactory {
 	private AnchorPane homeView;
 	private VBox allBLogView;
 	private AnchorPane blogView;
-	private AnchorPane allTweetView;
+	private AnchorPane allTweetView;	
 	
 	public ViewFactory() {}
 	
@@ -124,7 +126,21 @@ public class ViewFactory {
 			e.printStackTrace();
 		}
 		return null;
-}
+	}
+	
+	public AnchorPane getTweetView(Tweet tweet) {
+		AnchorPane tweetView = null;
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/Tweet.fxml"));
+				tweetView = loader.load();
+				TweetController tweetController = loader.getController();
+				tweetController.setTweetData(tweet);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return tweetView;
+	}
+	
 	
 	public void showAllCollectionView(Stage stage) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/FXML/AllCollection.fxml"));

@@ -21,9 +21,11 @@ import application.models.Tweet;
 
 public class TweetData {
 	public static void main(String[] args) {
-		ArrayList<Tweet> searchTweets = getTweetDataByKeyWord("Celes",10);
-		for (Tweet collection : searchTweets) {
-		System.out.println(collection.toString());
+		ArrayList<Tweet> searchTweets = getHotestTweets();
+		for (Tweet tweet : searchTweets) {
+			for(String string : tweet.getTweetImage()) {
+				System.out.println(string);
+			}
 	}
 	}
 	public static ArrayList<Tweet> getAllTweets() {
@@ -43,7 +45,7 @@ public class TweetData {
 				List<String> tweetImage = new ArrayList<>();
 				if (tweetNode.get("tweetImage").get(0) != null) {
 					for(JsonNode node:tweetNode.get("tweetImage")) {
-						tweetImage.add(node.toString());
+						tweetImage.add(node.asText());
 					}
 				}
 				String replys = tweetNode.get("replys").asText();
@@ -58,14 +60,14 @@ public class TweetData {
 		return tweetList;
 	}
 	
-	public static ArrayList<Tweet> getNewestTweets() {
+	public static ArrayList<Tweet> getHotestTweets() {
 		ArrayList<Tweet> tweetList = getAllTweets();
 		Collections.sort(tweetList, Comparator.comparing(Tweet::getLikes));
-		ArrayList<Tweet> newestTweets = new ArrayList<>();
+		ArrayList<Tweet> hotesTweets = new ArrayList<>();
 		for (int i = tweetList.size()-1 ; i >= tweetList.size() - 5; i--) {
-			newestTweets.add(tweetList.get(i));
+			hotesTweets.add(tweetList.get(i));
 		}
-		return newestTweets;
+		return hotesTweets;
 	}
 	
 	public static boolean containsKeyword(String[] baseDataArray, String keyword) {
@@ -105,7 +107,7 @@ public class TweetData {
 				List<String> tweetImage = new ArrayList<>();
 				if (objectNode.get("tweetImage").get(0) != null) {
 					for(JsonNode node:objectNode.get("tweetImage")) {
-						tweetImage.add(node.toString());
+						tweetImage.add(node.asText());
 					}
 				}
 				String replys = objectNode.get("replys").asText();
@@ -127,5 +129,70 @@ public class TweetData {
 
 		return TweetList;
 	}
+	
+	 public static Map<String, Integer> getTopHashtags(Integer limit) {
+	        Map<String, Integer> topHashtags = new HashMap<>();
 
+	        try {
+	            // Đọc dữ liệu từ tệp tweets.json
+	            ObjectMapper objectMapper = new ObjectMapper();
+	            File jsonFile = new File("./src/resources/data/tweets.json");
+	            JsonNode jsonNode = objectMapper.readTree(jsonFile);
+	            // Trích xuất tweetText và phân tích cú pháp để lấy danh sách các hashtag
+	            for (JsonNode tweetNode : jsonNode) {
+	                String tweetText = tweetNode.path("tweetText").asText();
+	                HashSet<String> hashtags = extractHashtags(tweetText);
+
+	                // Đếm tần suất xuất hiện của mỗi hashtag
+	                for (String hashtag : hashtags) {
+	                    topHashtags.put(hashtag, topHashtags.getOrDefault(hashtag, 0) + 1);
+	                }
+	            }
+
+	            topHashtags = topHashtags.entrySet().stream()
+	                    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+	                    .limit(limit)
+	                    .collect(LinkedHashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return topHashtags;
+	    }
+
+	    private static HashSet<String> extractHashtags(String tweetText) {
+	        // Trích xuất danh sách các hashtag từ một đoạn văn bản tweetText
+	        HashSet<String> hashtags = new HashSet<>();
+
+	        // Tìm ký tự '#' trong chuỗi
+	        int startIndex = tweetText.indexOf('#');
+	        while (startIndex != -1) {
+	            // Tìm ký tự không phải chữ cái, chữ số, hoặc dấu '_' sau ký tự '#'
+	            int endIndex = findNonAlphaNumericIndex(tweetText, startIndex + 1);
+
+	            // Gán từ '#'
+	            String hashtag = tweetText.substring(startIndex, endIndex);
+	            hashtags.add(hashtag);
+
+	            // Tìm ký tự '#' tiếp theo
+	            startIndex = tweetText.indexOf('#', endIndex);
+	        }
+	        return hashtags;
+	    }
+
+	    private static int findNonAlphaNumericIndex(String text, int startIndex) {
+	        int index = startIndex;
+	        while (index < text.length() && (Character.isLetterOrDigit(text.charAt(index)) || text.charAt(index) == '_')) {
+	            index++;
+	        }
+	        return index;
+	    }
+
+	    public static ArrayList<String> mapToArrayList(Map<String, Integer> topHashtagsMap, ArrayList<String> topHashtagsList){
+	        for (String key : topHashtagsMap.keySet()) {
+	            topHashtagsList.add(key);
+	        }
+	        return topHashtagsList;
+	    }
 }

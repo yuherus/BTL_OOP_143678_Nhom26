@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +30,13 @@ public class BlogListController implements Initializable{
 	@FXML
 	private VBox blogListPane;
 	
+	@FXML
+	private Button viewMoreBtn;
+	
 	private ArrayList<Blog> blogList;
+	
+	private int startIndex = 6;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -97,7 +104,7 @@ public class BlogListController implements Initializable{
 	        int columnCount = 3; // Số cột trong grid
 
 	        // Duyệt qua danh sách bài đăng và thêm chúng vào GridPane
-	        for (int i = 0; i < blogLists.size(); i++) {
+	        for (int i = 0; i < 6; i++) {
 	            Blog blog = blogLists.get(i);
 
 	            AnchorPane blogHBox = createBlogPane(blog);
@@ -106,6 +113,19 @@ public class BlogListController implements Initializable{
 	            int row = i / columnCount;
 	            gridPane.add(blogHBox, column, row);
 	        }
+	        
+	        viewMoreBtn.setOnAction(event -> {
+	        	for (int i = startIndex; i < Math.min(startIndex + 6, blogLists.size()); i++) {
+		            Blog blog = blogLists.get(i);
+
+		            AnchorPane blogHBox = createBlogPane(blog);
+
+		            int column = i % columnCount;
+		            int row = i / columnCount;
+		            gridPane.add(blogHBox, column, row);
+		        }
+	        	startIndex += 6;
+	        });
 
 	        // Thêm GridPane vào AnchorPane
 	        blogListPane.getChildren().add(gridPane);

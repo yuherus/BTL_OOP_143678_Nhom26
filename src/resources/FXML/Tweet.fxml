@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefWidth="800" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TweetController">
+   <ScrollPane prefHeight="500.0" prefWidth="800.0">
+      <content>
+      	<AnchorPane prefHeight="500.0" prefWidth="787.0" style="-fx-background-color: #fff;">
+                     <children>
+               <VBox fx:id="tweetVBox" alignment="CENTER" layoutX="19.0" layoutY="34.0" prefWidth="731.0" style="-fx-background-color: #fff; -fx-border-color: #555; -fx-border-radius: 15;">
+                  <children>
+                     <AnchorPane prefWidth="731.0">
+                        <children>
+                                    <Label id="date" fx:id="tweetTime" alignment="CENTER" layoutX="477.0" layoutY="25.0" prefHeight="22.0" prefWidth="201.0" text="Aug 29, 2023" textFill="#0000009c" />
+                                    <Text id="text" fx:id="tweetText" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ..." textAlignment="JUSTIFY" wrappingWidth="685.3333333333333" />
+                                    <Label id="tweet_name" fx:id="tweetUserName" alignment="CENTER" layoutX="89.0" layoutY="14.0" prefHeight="22.0" prefWidth="102.0" text="Vish.eth">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font>
+                           </Label>
+                                    <ImageView fx:id="tweetImage" fitHeight="79.0" fitWidth="102.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="https://news.artnet.com/app/news-upload/2021/09/Yuga-Labs-Bored-Ape-Yacht-Club-4466.jpg" />
+                                       </image>
+                                    </ImageView>
+                        </children>
+                        <VBox.margin>
+                           <Insets bottom="30.0" />
+                        </VBox.margin>
+                     </AnchorPane>
+                  </children>
+                  <padding>
+                     <Insets bottom="30.0" left="30.0" right="30.0" />
+                  </padding>
+               </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+         </AnchorPane>
+      </content>
+   </ScrollPane>
+</AnchorPane>
