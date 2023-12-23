@@ -6,14 +6,20 @@ import application.data.BlogData;
 import application.data.TweetData;
 import application.models.Blog;
 import application.models.Collection;
+import application.models.Model;
 import application.models.Tweet;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 public class CollectionController extends Controller{
@@ -106,6 +112,10 @@ public class CollectionController extends Controller{
         dateText.setPrefWidth(70);
 
         anchorPane.getChildren().addAll(imageView, titleText, descriptionText, dateText);
+        anchorPane.setOnMouseClicked(event -> {
+                BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
+                appBorderPane.setCenter(Model.getInstance().getViewFactory().getBlogView(blog.getUrl()));
+            });
         return anchorPane;
     }
 	
@@ -140,7 +150,18 @@ public class CollectionController extends Controller{
 
         // Add children to AnchorPane
         anchorPane.getChildren().addAll(imageView, usernameLabel, nameLabel, textLabel);
+        anchorPane.setOnMouseClicked(event -> {
+        	Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setTitle("Tweet");
 
+        // Set the FXML content to the pop-up stage
+        Scene popupScene = new Scene(Model.getInstance().getViewFactory().getTweetView(tweet), 800, 500);
+        popupStage.setScene(popupScene);
+
+        // Show the pop-up stage
+        popupStage.showAndWait();
+        });
         return anchorPane;
     }
 }

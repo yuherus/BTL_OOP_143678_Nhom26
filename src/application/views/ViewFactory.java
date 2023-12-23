@@ -138,8 +138,5 @@ public class ViewFactory {
 			}
 		return tweetView;
 	}
-	
-	
-	
 
 }

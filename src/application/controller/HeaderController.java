@@ -1,6 +1,4 @@
 package application.controller;
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -96,9 +94,7 @@ public class HeaderController implements Initializable {
 		String searchText = textFieldSearch.getText();
 		if (!searchText.equals("")) {
 			BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
-			ViewFactory viewFactory = new ViewFactory();
-			AnchorPane searchView = viewFactory.getSearch(searchText);
-			appBorderPane.setCenter(searchView);
+			appBorderPane.setCenter(Model.getInstance().getViewFactory().getSearch(searchText));
 		}
 	}
 	
