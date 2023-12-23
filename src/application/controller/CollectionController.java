@@ -54,7 +54,8 @@ public class CollectionController extends Controller{
 		blockchain.setText(collection.getBlockchain());
 		address.setText(collection.getId().substring(collection.getId().indexOf(":")+1));
 		
-		ArrayList<Blog> relatedBlogList = BlogData.getBlogDataByKeyWord(collection.getName(), 4);
+		BlogData blogData = new BlogData();
+		ArrayList<Blog> relatedBlogList = blogData.getPostDataByKeyWord(collection.getName(), 4);
 		for (Blog blog : relatedBlogList) {
             AnchorPane blogAnchorPane = createBlogAnchorPane(blog);
             relatedBlog.getChildren().add(blogAnchorPane);

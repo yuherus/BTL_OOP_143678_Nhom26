@@ -14,17 +14,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import application.models.Blog;
 import application.models.Collection;
 
-public class BlogData {
-	public static void main(String[] args) {	
-		ArrayList<Blog> blogList = getAllBlogs();
-		ArrayList<Blog> blogs = getNewestBlogs();
+public class BlogData implements PostData<Blog> {
+	public static void main(String[] args) {
+		BlogData blogData = new BlogData();
+		ArrayList<Blog> blogList = blogData.getAllPosts();
+		ArrayList<Blog> blogs = blogData.getNewestPosts();
 		for (Blog blog : blogs) {
 			System.out.println(blog.getLocalDate());
 		}
 	}
 	
-	public static ArrayList<Blog> getNewestBlogs() {
-		ArrayList<Blog> blogList = getAllBlogs();
+	@Override
+	public ArrayList<Blog> getNewestPosts(){
+		ArrayList<Blog> blogList = this.getAllPosts();
 		Collections.sort(blogList, Comparator.comparing(Blog::getLocalDate));
 		ArrayList<Blog> newestBlogs = new ArrayList<>();
 		for (int i = blogList.size()-1 ; i >= blogList.size() - 5; i--) {
@@ -33,7 +35,8 @@ public class BlogData {
 		return newestBlogs;
 	}
 	
-	public static ArrayList<Blog> getAllBlogs() {
+	@Override
+	public ArrayList<Blog> getAllPosts() {
 		ArrayList<Blog> blogList = new ArrayList<>();
 		String fileName = "./src/resources/data/blog.json";
 		try {
@@ -63,13 +66,14 @@ public class BlogData {
 		return blogList;
 	}
 	
-	public static List<Blog> getRelatedBlogs(Collection collection) {
+	public List<Blog> getRelatedBlogs(Collection collection) {
 		List<Blog> relatedBlogs = new ArrayList<>();
-		relatedBlogs = getBlogDataByKeyWord(collection.getName(),4);
+		relatedBlogs = this.getPostDataByKeyWord(collection.getName(),4);
 		return relatedBlogs;
 	}
 	
-	public static boolean containsKeyword(String[] baseDataArray, String keyword) {
+	@Override
+	public boolean containsKeyword(String[] baseDataArray, String keyword) {
 		// Convert the keyword to lowercase for case-insensitive comparison
 		String lowercasedKeyword = keyword.toLowerCase();
 
@@ -88,7 +92,9 @@ public class BlogData {
 	}
 
 //	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
-	public static ArrayList<Blog> getBlogDataByKeyWord(String keyword, int limit) {
+	
+	@Override
+	public ArrayList<Blog> getPostDataByKeyWord(String keyword, int limit) {
 		ArrayList<Blog> blogList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/blog.json");
 

@@ -38,8 +38,9 @@ public class SearchController implements Initializable {
 	}
 	
 	public void setLabel(String textField) {
+		BlogData blogData = new BlogData();
 		labelKeyWord.setText("Search results for \""+textField+"\"");
-		blogList = BlogData.getBlogDataByKeyWord(textField, 20);
+		blogList = blogData.getPostDataByKeyWord(textField, 20);
 		setBlogData(blogList);
 	}
 

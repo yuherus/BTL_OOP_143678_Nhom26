@@ -157,7 +157,8 @@ public class HomeController implements Initializable{
             }
         });
 		
-		ArrayList<Blog> newestBlogList = BlogData.getNewestBlogs();
+		BlogData blogData = new BlogData();
+		ArrayList<Blog> newestBlogList = blogData.getNewestPosts();
 		
 		ArrayList<VBox> vBoxList = createVBoxWithData(newestBlogList);
 		for (VBox vBox : vBoxList) {

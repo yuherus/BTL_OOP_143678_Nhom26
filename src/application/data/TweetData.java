@@ -16,17 +16,22 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.models.Tweet;
+import javafx.geometry.Pos;
 import application.models.Collection;
+import application.models.Post;
 import application.models.Tweet;
 
-public class TweetData {
+public class TweetData implements PostData <Tweet> {
 	public static void main(String[] args) {
-		ArrayList<Tweet> searchTweets = getTweetDataByKeyWord("Celes",10);
+		TweetData tweetData = new TweetData();
+		ArrayList<Tweet> searchTweets = tweetData.getPostDataByKeyWord("Celes",10);
 		for (Tweet collection : searchTweets) {
 		System.out.println(collection.toString());
 	}
 	}
-	public static ArrayList<Tweet> getAllTweets() {
+	
+	@Override
+	public ArrayList<Tweet> getAllPosts() {
 		ArrayList<Tweet> tweetList = new ArrayList<>();
 		String fileName = "./src/resources/data/tweets.json";
 		try {
@@ -58,8 +63,9 @@ public class TweetData {
 		return tweetList;
 	}
 	
-	public static ArrayList<Tweet> getNewestTweets() {
-		ArrayList<Tweet> tweetList = getAllTweets();
+	@Override
+	public ArrayList<Tweet> getNewestPosts() {
+		ArrayList<Tweet> tweetList = this.getAllPosts();
 		Collections.sort(tweetList, Comparator.comparing(Tweet::getLikes));
 		ArrayList<Tweet> newestTweets = new ArrayList<>();
 		for (int i = tweetList.size()-1 ; i >= tweetList.size() - 5; i--) {
@@ -68,7 +74,8 @@ public class TweetData {
 		return newestTweets;
 	}
 	
-	public static boolean containsKeyword(String[] baseDataArray, String keyword) {
+	@Override
+	public boolean containsKeyword(String[] baseDataArray, String keyword) {
 		// Convert the keyword to lowercase for case-insensitive comparison
 		String lowercasedKeyword = keyword.toLowerCase();
 
@@ -87,7 +94,9 @@ public class TweetData {
 	}
 
 //	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
-	public static ArrayList<Tweet> getTweetDataByKeyWord(String keyword, int limit) {
+	
+	@Override
+	public ArrayList<Tweet> getPostDataByKeyWord(String keyword, int limit) {
 		ArrayList<Tweet> TweetList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/tweets.json");
 

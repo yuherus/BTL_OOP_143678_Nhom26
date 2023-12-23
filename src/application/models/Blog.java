@@ -3,7 +3,7 @@ package application.models;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Blog {
+public class Blog extends Post {
 	private String title;
 	private String description;
 	private String author;

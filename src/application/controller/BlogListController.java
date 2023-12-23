@@ -33,7 +33,8 @@ public class BlogListController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		blogList = BlogData.getAllBlogs();
+		BlogData blogData = new BlogData();
+		blogList = blogData.getAllPosts();
 		ImageView imageView = new ImageView(new Image(blogList.get(0).getImageUrl()));
         imageView.setFitHeight(340.0);
         imageView.setFitWidth(698.0);
