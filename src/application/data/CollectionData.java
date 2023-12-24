@@ -19,18 +19,9 @@ import application.models.Collection;
 import javafx.scene.image.Image;
 
 public class CollectionData extends JsonToData<Collection> {
-	public static void main(String[] args) {
-//		List<Collection> trendingCollections= getTrendingCollections("POLYGON", "H1", 10);
-//		for (Collection collection : trendingCollections) {
-//			System.out.println(collection.toString());
-//		}
-		CollectionData collectionData = new CollectionData();
-		collectionData.getCollectionBySearchWord("Bo", 10, "H1");
-
-	}
 
 	public ArrayList<Collection> getAllCollection(String fileName) {
-		getDataToObect(fileName, Collection.class);
+		getDataToObject(fileName, Collection.class);
 		return getDataArrayList();
 	}
 
@@ -46,13 +37,13 @@ public class CollectionData extends JsonToData<Collection> {
 		}
 	}
 
-	public List<Collection> getCollectionBySearchWord(String SearchWord, int limit, String period) {
+	public List<Collection> getCollectionBySearchWord(String searchWord, int limit, String period) {
 		String jsonFile = "./src/resources/data/collection" + period + ".json";
 		List<Collection> collectList = getAllCollection(jsonFile);
 		List<Collection> collectSearchList = new ArrayList<>();
 
 		for (Collection collect : collectList) {
-			boolean checkCondition = collect.getName().contains(SearchWord);
+			boolean checkCondition = collect.getName().toLowerCase().contains(searchWord.toLowerCase());
 			if (checkCondition) {
 				collectSearchList.add(collect);
 			}
