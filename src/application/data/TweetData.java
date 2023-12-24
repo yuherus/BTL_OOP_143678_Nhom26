@@ -25,17 +25,10 @@ import application.models.Post;
 import application.models.Tweet;
 
 public class TweetData extends JsonToData<Tweet> implements PostData<Tweet> {
-	public static void main(String[] args) {
-		TweetData tweetData = new TweetData();
-		ArrayList<Tweet> searchTweets = tweetData.getPostDataByKeyWord("na", 10);
-		for (Tweet collection : searchTweets) {
-			System.out.println(collection.toString());
-		}
-	}
 
 	@Override
 	public ArrayList<Tweet> getAllPosts() {
-		getDataToObect("./src/resources/data/tweets.json", Tweet.class);
+		getDataToObject("./src/resources/data/tweets.json", Tweet.class);
 		return getDataArrayList();
 	}
 
