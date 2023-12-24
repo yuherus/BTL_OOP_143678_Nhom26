@@ -18,10 +18,7 @@ public class GetTweetData {
     private static String apiKey = "d0ba958996msh9dc90fce37d2f3dp1523bbjsn19c95f20f0f0";
 
     public static void main(String[] args) {
-        List<Tweet> tweets = getTweets(200, 20);
-        for (Tweet tweet : tweets) {
-            System.out.println(tweet.toString());
-        }
+
     }
 
     public static ArrayList<Tweet> getTweets(int numRequests, int tweetsPerPage) {

@@ -159,8 +159,12 @@ public class HomeController implements Initializable{
             }
         });
 		
-		ArrayList<Blog> newestBlogList = BlogData.getNewestBlogs();
-		ArrayList<Tweet> hotestTweetList = TweetData.getHotestTweets();
+
+		BlogData blogData = new BlogData();
+		ArrayList<Blog> newestBlogList = blogData.getNewestPosts();
+		
+		TweetData tweetData = new TweetData();
+		ArrayList<Tweet> hotestTweetList = tweetData.getHotestTweets();
 		
 		ArrayList<VBox> vBoxBlogList = createVBoxBlogWithData(newestBlogList);
 		for (VBox vBox : vBoxBlogList) {

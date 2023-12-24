@@ -2,7 +2,7 @@ package application.models;
 
 import java.util.List;
 
-public class Tweet {
+public class Tweet extends Post {
     private String userImage;
     private String user;
     private String userName;

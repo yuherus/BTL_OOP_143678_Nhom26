@@ -66,7 +66,6 @@ public class SearchController implements Initializable {
 	}
 	
 	public void setLabel(String textField) {
-		labelKeyWord.setText("Search results for \""+textField+"\"");
 		
 		for (Node node : collectionTablePane.getChildren()) {
             if (node instanceof TableView) {
@@ -107,10 +106,13 @@ public class SearchController implements Initializable {
 			collectionTable.setItems(collectionList);
 		});	
 		
-		blogList = BlogData.getBlogDataByKeyWord(textField, 10);
+		BlogData blogData = new BlogData();
+		labelKeyWord.setText("Search results for \""+textField+"\"");
+		blogList = blogData.getPostDataByKeyWord(textField, 20);
 		setBlogData(blogList);
 		
-		tweetList = TweetData.getTweetDataByKeyWord(textField, 10);
+		TweetData tweetData = new TweetData();
+		tweetList = tweetData.getPostDataByKeyWord(textField, 10);
 		for (Tweet tweet : tweetList) {
 			AnchorPane anchorPane = createTweetAnchorPane(tweet);
 			tweetListVbox.getChildren().add(anchorPane);

@@ -37,7 +37,8 @@ public class TweetListController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		tweetList = TweetData.getAllTweets();
+		TweetData tweetData = new TweetData();
+		tweetList = tweetData.getAllPosts();
 		System.out.println(tweetList.size());
 		for (int i = 0; i < 10; i++) {
 			AnchorPane anchorPane = createTweetAnchorPane(tweetList.get(i));
