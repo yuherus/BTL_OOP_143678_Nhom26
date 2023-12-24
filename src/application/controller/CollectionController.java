@@ -1,6 +1,7 @@
 package application.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import application.data.BlogData;
 import application.data.TweetData;
@@ -62,18 +63,20 @@ public class CollectionController extends Controller{
 		blockchain.setText(collection.getBlockchain());
 		address.setText(collection.getId().substring(collection.getId().indexOf(":")+1));
 		
-		ArrayList<Blog> relatedBlogList = BlogData.getBlogDataByKeyWord(collection.getName(), 4);
+		BlogData blogData = new BlogData();
+		List<Blog> relatedBlogList = blogData.getRelatedPosts(collection);
 		if (relatedBlogList.size() < 4) {
-			relatedBlogList.addAll(BlogData.getBlogDataByKeyWord(collection.getBlockchain(), 4 - relatedBlogList.size()));
+			relatedBlogList.addAll(blogData.getPostDataByKeyWord(collection.getBlockchain(), 4 - relatedBlogList.size()));
 		}
 		for (Blog blog : relatedBlogList) {
             AnchorPane blogAnchorPane = createBlogAnchorPane(blog);
             relatedBlog.getChildren().add(blogAnchorPane);
         }
 		
-		ArrayList<Tweet> relatedTweetList = TweetData.getTweetDataByKeyWord(collection.getName(), 4);
+		TweetData tweetData = new TweetData();
+		List<Tweet> relatedTweetList = tweetData.getRelatedPosts(collection);
 		if (relatedTweetList.size() < 4) {
-			relatedTweetList.addAll(TweetData.getTweetDataByKeyWord(collection.getBlockchain(), 4 - relatedTweetList.size()));
+			relatedTweetList.addAll(tweetData.getPostDataByKeyWord(collection.getBlockchain(), 4 - relatedTweetList.size()));
 		}
 		for (Tweet tweet : relatedTweetList) {
             AnchorPane tweetAnchorPane = createTweetAnchorPane(tweet);

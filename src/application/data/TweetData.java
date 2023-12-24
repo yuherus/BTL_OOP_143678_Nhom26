@@ -16,19 +16,23 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.models.Tweet;
+import javafx.geometry.Pos;
+import application.models.Blog;
 import application.models.Collection;
+import application.models.Post;
 import application.models.Tweet;
 
-public class TweetData {
+public class TweetData implements PostData <Tweet> {
 	public static void main(String[] args) {
-		ArrayList<Tweet> searchTweets = getHotestTweets();
-		for (Tweet tweet : searchTweets) {
-			for(String string : tweet.getTweetImage()) {
-				System.out.println(string);
-			}
+		TweetData tweetData = new TweetData();
+		ArrayList<Tweet> searchTweets = tweetData.getPostDataByKeyWord("Celes",10);
+		for (Tweet collection : searchTweets) {
+		System.out.println(collection.toString());
+		}
 	}
-	}
-	public static ArrayList<Tweet> getAllTweets() {
+	
+	@Override
+	public ArrayList<Tweet> getAllPosts() {
 		ArrayList<Tweet> tweetList = new ArrayList<>();
 		String fileName = "./src/resources/data/tweets.json";
 		try {
@@ -41,7 +45,7 @@ public class TweetData {
 				String user = tweetNode.get("user").asText();
 				String userName = tweetNode.get("userName").asText();
 				String timeStamps = tweetNode.get("timeStamps").asText();
-				String tweetText = tweetNode.get("tweetText").toString();
+				String tweetText = tweetNode.get("tweetText").asText();
 				List<String> tweetImage = new ArrayList<>();
 				if (tweetNode.get("tweetImage").get(0) != null) {
 					for(JsonNode node:tweetNode.get("tweetImage")) {
@@ -60,8 +64,8 @@ public class TweetData {
 		return tweetList;
 	}
 	
-	public static ArrayList<Tweet> getHotestTweets() {
-		ArrayList<Tweet> tweetList = getAllTweets();
+	public ArrayList<Tweet> getHotestTweets() {
+		ArrayList<Tweet> tweetList = this.getAllPosts();
 		Collections.sort(tweetList, Comparator.comparing(Tweet::getLikes));
 		ArrayList<Tweet> hotesTweets = new ArrayList<>();
 		for (int i = tweetList.size()-1 ; i >= tweetList.size() - 5; i--) {
@@ -70,7 +74,15 @@ public class TweetData {
 		return hotesTweets;
 	}
 	
-	public static boolean containsKeyword(String[] baseDataArray, String keyword) {
+	@Override
+	public List<Tweet> getRelatedPosts(Collection collection) {
+		List<Tweet> relatedTweets = new ArrayList<>();
+		relatedTweets = this.getPostDataByKeyWord(collection.getName(),4);
+		return relatedTweets;
+	}
+	
+	@Override
+	public boolean containsKeyword(String[] baseDataArray, String keyword) {
 		// Convert the keyword to lowercase for case-insensitive comparison
 		String lowercasedKeyword = keyword.toLowerCase();
 
@@ -89,7 +101,9 @@ public class TweetData {
 	}
 
 //	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
-	public static ArrayList<Tweet> getTweetDataByKeyWord(String keyword, int limit) {
+	
+	@Override
+	public ArrayList<Tweet> getPostDataByKeyWord(String keyword, int limit) {
 		ArrayList<Tweet> TweetList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/tweets.json");
 
@@ -103,7 +117,7 @@ public class TweetData {
 				String user = objectNode.get("user").asText();
 				String userName = objectNode.get("userName").asText();
 				String timeStamps = objectNode.get("timeStamps").asText();
-				String tweetText = objectNode.get("tweetText").toString();
+				String tweetText = objectNode.get("tweetText").asText();
 				List<String> tweetImage = new ArrayList<>();
 				if (objectNode.get("tweetImage").get(0) != null) {
 					for(JsonNode node:objectNode.get("tweetImage")) {
