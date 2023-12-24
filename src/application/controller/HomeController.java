@@ -180,7 +180,9 @@ public class HomeController implements Initializable{
 	        vBox.setPrefHeight(200.0);
 	        vBox.setPrefWidth(100.0);
 	        vBox.setSpacing(10.0);
-	        
+	        vBox.setStyle("-fx-background-color:#FFC670");
+	        vBox.setPadding(new Insets(5, 5, 5, 5));
+
 	        Image image = new Image(blog.getImageUrl());
 	        ImageView imageView = new ImageView(image);
 	        
@@ -224,7 +226,9 @@ public class HomeController implements Initializable{
 		        vbox.setPrefHeight(200.0);
 		        vbox.setPrefWidth(100.0);
 		        vbox.setAlignment(Pos.CENTER);
-		        
+		        vbox.setStyle("-fx-background-color:#FFC670");
+		        vbox.setPadding(new Insets(5, 5, 5, 5));
+
 		        // Image
 		        ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
 		        imageView.setFitHeight(150.0);
