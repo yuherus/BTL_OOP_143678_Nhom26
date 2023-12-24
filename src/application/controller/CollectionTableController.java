@@ -76,10 +76,11 @@ public class CollectionTableController implements Initializable {
 	} 	
 		
 	public void setAllCollectionList() {
-		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 5000));
-		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 5000));
-		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 5000));
-		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 5000));
+		CollectionData collectionData = new CollectionData();
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D1", 5000));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D7", 5000));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D30", 5000));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "H1", 5000));
 		collectionList = top1DCollectionList;
 		trendingComboBox.setItems(comboBoxList);
 		trendingComboBox.setOnAction(event -> {
@@ -105,10 +106,11 @@ public class CollectionTableController implements Initializable {
 	
 	public void setTopCollectionList() {
 		//Nhập dữ liệu của collectionTable
-			ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 20));
-			ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 20));
-			ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 20));
-			ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 20));
+			CollectionData collectionData = new CollectionData();
+			ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D1", 20));
+			ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D7", 20));
+			ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D30", 20));
+			ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "H1", 20));
 			collectionList = top1DCollectionList;
 			trendingComboBox.setItems(comboBoxList);
 			trendingComboBox.setOnAction(event -> {

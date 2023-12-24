@@ -34,10 +34,11 @@ public class AllCollectionController implements Initializable{
             }
         }
 		
-		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 5000));
-		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 5000));
-		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 5000));
-		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 5000));		
+		CollectionData collectionData = new CollectionData();
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D1", 5000));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D7", 5000));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D30", 5000));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "H1", 5000));		
 		collectionList = top1DCollectionList;
 		collectionTable.setItems(collectionList);
 		

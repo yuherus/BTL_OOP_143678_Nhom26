@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import application.models.Blog;
 import application.models.Collection;
 
-public class BlogData implements PostData<Blog> {
+public class BlogData extends JsonToData<Blog> implements PostData<Blog> {
 	public static void main(String[] args) {
 		BlogData blogData = new BlogData();
 		ArrayList<Blog> blogList = blogData.getAllPosts();
@@ -23,55 +23,31 @@ public class BlogData implements PostData<Blog> {
 			System.out.println(blog.getLocalDate());
 		}
 	}
-	
-	public ArrayList<Blog> getNewestPosts(){
+
+	public ArrayList<Blog> getNewestPosts() {
 		ArrayList<Blog> blogList = this.getAllPosts();
 		Collections.sort(blogList, Comparator.comparing(Blog::getLocalDate));
 		ArrayList<Blog> newestBlogs = new ArrayList<>();
-		for (int i = blogList.size()-1 ; i >= blogList.size() - 5; i--) {
+		for (int i = blogList.size() - 1; i >= blogList.size() - 5; i--) {
 			newestBlogs.add(blogList.get(i));
 		}
 		return newestBlogs;
 	}
-	
+
 	@Override
 	public ArrayList<Blog> getAllPosts() {
-		ArrayList<Blog> blogList = new ArrayList<>();
 		String fileName = "./src/resources/data/blog.json";
-		try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode rootNode = objectMapper.readTree(new File(fileName));
-            Iterator<JsonNode> elements = rootNode.elements();
-            while (elements.hasNext()) {
-                JsonNode blogNode = elements.next();
-                String postTitle = blogNode.get("post_title").asText();
-				String postContent = blogNode.get("post_content").asText();
-				String postDate = blogNode.get("post_date").asText();
-				String postLink = blogNode.get("post_link").asText();
-				String postDescription = blogNode.get("post_description").toString();
-				String postImage;
-				if (blogNode.get("post_image").get(0) != null) {
-				postImage = blogNode.get("post_image").get(0).asText();
-				} else {
-				postImage = "/resources/images/Hinh-Nen-Trang-10.jpg";
-				}
-				String postAuthor = blogNode.get("post_author").asText();
-
-				blogList.add(new Blog(postTitle, postDescription, postAuthor, postContent, postDate, postLink, postImage));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		return blogList;
+		getDataToObect(fileName, Blog.class);
+		return getDataArrayList();
 	}
-	
+
 	@Override
 	public List<Blog> getRelatedPosts(Collection collection) {
 		List<Blog> relatedBlogs = new ArrayList<>();
-		relatedBlogs = this.getPostDataByKeyWord(collection.getName(),4);
+		relatedBlogs = this.getPostDataByKeyWord(collection.getName(), 4);
 		return relatedBlogs;
 	}
-	
+
 	@Override
 	public boolean containsKeyword(String[] baseDataArray, String keyword) {
 		// Convert the keyword to lowercase for case-insensitive comparison
@@ -92,46 +68,25 @@ public class BlogData implements PostData<Blog> {
 	}
 
 //	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
-	
+
 	@Override
 	public ArrayList<Blog> getPostDataByKeyWord(String keyword, int limit) {
-		ArrayList<Blog> blogList = new ArrayList<>();
 		File jsonFile = new File("./src/resources/data/blog.json");
+		ArrayList<Blog> blogList = getAllPosts();
+		ArrayList<Blog> blogSearchList = new ArrayList<>();
+		for (Blog blog : blogList) {
 
-		try {
-			ObjectMapper objectMapper = new ObjectMapper();
-			JsonNode rootNode = objectMapper.readTree(jsonFile);
+			String[] baseDataNeedCheck = { blog.getTitle(), blog.getContent(), blog.getDescription() };
+			boolean checkCondition = containsKeyword(baseDataNeedCheck, keyword);
 
-			// Assuming your JSON file is an array, iterate over each object
-			for (JsonNode objectNode : rootNode) {
-				// Access individual fields of each object
-				String postTitle = objectNode.get("post_title").asText();
-				String postContent = objectNode.get("post_content").asText();
-				String postDate = objectNode.get("post_date").asText();
-				String postLink = objectNode.get("post_link").asText();
-				String postDescription = objectNode.get("post_description").toString();
-				String postImage;
-				if (objectNode.get("post_image").get(0) != null) {
-				postImage = objectNode.get("post_image").get(0).asText();
-				} else {
-				postImage = "/resources/images/Hinh-Nen-Trang-10.jpg";
-				}
-				String postAuthor = objectNode.get("post_author").asText();
-
-				String[] baseDataNeedCheck = {postTitle, postContent, postDescription};
-				boolean checkCondition = containsKeyword(baseDataNeedCheck, keyword);
-
-				if (checkCondition) {
-					blogList.add(new Blog(postTitle, postDescription, postAuthor, postContent, postDate, postLink, postImage));
-					if (limit > 0 && blogList.size() >= limit) {
-						break;
-					}
+			if (checkCondition) {
+				blogSearchList.add(blog);
+				if (limit > 0 && blogSearchList.size() >= limit) {
+					break;
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
-		return blogList;
+		return blogSearchList;
 	}
 }

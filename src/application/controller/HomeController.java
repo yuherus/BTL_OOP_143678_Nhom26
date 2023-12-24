@@ -93,10 +93,11 @@ public class HomeController implements Initializable{
             }
         }
 		
-		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D1", 20));
-		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D7", 20));
-		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "D30", 20));
-		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getTrendingCollections("ALL", "H1", 20));		
+		CollectionData collectionData = new CollectionData();
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D1", 20));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D7", 20));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "D30", 20));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(collectionData.getTrendingCollections("ALL", "H1", 20));		
 		collectionList = top1DCollectionList;
 		collectionTable.setItems(collectionList);
 		
@@ -141,8 +142,9 @@ public class HomeController implements Initializable{
 			appBorderPane.setCenter(Model.getInstance().getViewFactory().getAllTweetView());
 		});
 		//Nhập dữ liệu cho tagList
+		TweetData tweetData = new TweetData();
 		ArrayList<String> hotTagList = new ArrayList<>();
-		tagListData = FXCollections.observableArrayList(TweetData.mapToArrayList(TweetData.getTopHashtags(10), hotTagList));
+		tagListData = FXCollections.observableArrayList(tweetData.mapToArrayList(tweetData.getTopHashtags(10), hotTagList));
 		tagList.setItems(tagListData);
 		
 		tagList.setOnMouseClicked(event ->{
@@ -163,7 +165,6 @@ public class HomeController implements Initializable{
 		BlogData blogData = new BlogData();
 		ArrayList<Blog> newestBlogList = blogData.getNewestPosts();
 		
-		TweetData tweetData = new TweetData();
 		ArrayList<Tweet> hotestTweetList = tweetData.getHotestTweets();
 		
 		ArrayList<VBox> vBoxBlogList = createVBoxBlogWithData(newestBlogList);
@@ -185,7 +186,7 @@ public class HomeController implements Initializable{
 	        vBox.setPrefWidth(100.0);
 	        vBox.setSpacing(10.0);
 	        
-	        Image image = new Image(blog.getImageUrl());
+	        Image image = new Image(blog.getImageUrl().get(0));
 	        ImageView imageView = new ImageView(image);
 	        
 	        imageView.setFitWidth(150.0);
