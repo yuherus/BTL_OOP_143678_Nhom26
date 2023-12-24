@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.models.Collection;
-import application.models.Content;
+
 
 
 public abstract class JsonToData <T> {	
@@ -23,7 +23,7 @@ public abstract class JsonToData <T> {
 		this.dataArrayList = dataArrayList;
 	}
 
-	protected void getDataToObect(String fileName, Class<T> tClass){
+	protected void getDataToObject(String fileName, Class<T> tClass){
 		dataArrayList = new ArrayList<>();
 		try {
             ObjectMapper objectMapper = new ObjectMapper();

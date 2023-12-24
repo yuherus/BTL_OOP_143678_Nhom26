@@ -15,14 +15,6 @@ import application.models.Blog;
 import application.models.Collection;
 
 public class BlogData extends JsonToData<Blog> implements PostData<Blog> {
-	public static void main(String[] args) {
-		BlogData blogData = new BlogData();
-		ArrayList<Blog> blogList = blogData.getAllPosts();
-		ArrayList<Blog> blogs = blogData.getNewestPosts();
-		for (Blog blog : blogs) {
-			System.out.println(blog.getLocalDate());
-		}
-	}
 
 	public ArrayList<Blog> getNewestPosts() {
 		ArrayList<Blog> blogList = this.getAllPosts();
@@ -37,7 +29,7 @@ public class BlogData extends JsonToData<Blog> implements PostData<Blog> {
 	@Override
 	public ArrayList<Blog> getAllPosts() {
 		String fileName = "./src/resources/data/blog.json";
-		getDataToObect(fileName, Blog.class);
+		getDataToObject(fileName, Blog.class);
 		return getDataArrayList();
 	}
 
@@ -71,7 +63,6 @@ public class BlogData extends JsonToData<Blog> implements PostData<Blog> {
 
 	@Override
 	public ArrayList<Blog> getPostDataByKeyWord(String keyword, int limit) {
-		File jsonFile = new File("./src/resources/data/blog.json");
 		ArrayList<Blog> blogList = getAllPosts();
 		ArrayList<Blog> blogSearchList = new ArrayList<>();
 		for (Blog blog : blogList) {
