@@ -1,4 +1,4 @@
-package application.data;
+	package application.data;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,24 +51,19 @@ public class TweetData extends JsonToData<Tweet> implements PostData<Tweet> {
 
 	@Override
 	public boolean containsKeyword(String[] baseDataArray, String keyword) {
-		// Convert the keyword to lowercase for case-insensitive comparison
 		String lowercasedKeyword = keyword.toLowerCase();
 
-		// Iterate through each string in the array
 		for (String baseData : baseDataArray) {
-			// Convert the current base data to lowercase for comparison
 			String lowercasedBaseData = baseData.toLowerCase();
 
-			// Check if the lowercased base data contains the lowercased keyword
 			if (lowercasedBaseData.contains(lowercasedKeyword)) {
-				return true; // Return true if any string contains the keyword
+				return true;
 			}
 		}
 
-		return false; // Return false if none of the strings contain the keyword
+		return false; 
 	}
 
-//	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
 
 	@Override
 	public ArrayList<Tweet> getPostDataByKeyWord(String keyword, int limit) {
@@ -95,16 +90,13 @@ public class TweetData extends JsonToData<Tweet> implements PostData<Tweet> {
 		Map<String, Integer> topHashtags = new HashMap<>();
 
 		try {
-			// Đọc dữ liệu từ tệp tweets.json
 			ObjectMapper objectMapper = new ObjectMapper();
 			File jsonFile = new File("./src/resources/data/tweets.json");
 			JsonNode jsonNode = objectMapper.readTree(jsonFile);
-			// Trích xuất tweetText và phân tích cú pháp để lấy danh sách các hashtag
 			for (JsonNode tweetNode : jsonNode) {
 				String tweetText = tweetNode.path("tweetText").asText();
 				HashSet<String> hashtags = extractHashtags(tweetText);
 
-				// Đếm tần suất xuất hiện của mỗi hashtag
 				for (String hashtag : hashtags) {
 					topHashtags.put(hashtag, topHashtags.getOrDefault(hashtag, 0) + 1);
 				}
@@ -122,20 +114,15 @@ public class TweetData extends JsonToData<Tweet> implements PostData<Tweet> {
 	}
 
 	private HashSet<String> extractHashtags(String tweetText) {
-		// Trích xuất danh sách các hashtag từ một đoạn văn bản tweetText
 		HashSet<String> hashtags = new HashSet<>();
 
-		// Tìm ký tự '#' trong chuỗi
 		int startIndex = tweetText.indexOf('#');
 		while (startIndex != -1) {
-			// Tìm ký tự không phải chữ cái, chữ số, hoặc dấu '_' sau ký tự '#'
 			int endIndex = findNonAlphaNumericIndex(tweetText, startIndex + 1);
 
-			// Gán từ '#'
 			String hashtag = tweetText.substring(startIndex, endIndex);
 			hashtags.add(hashtag);
 
-			// Tìm ký tự '#' tiếp theo
 			startIndex = tweetText.indexOf('#', endIndex);
 		}
 		return hashtags;

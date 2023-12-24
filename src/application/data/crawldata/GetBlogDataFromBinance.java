@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 public class GetBlogDataFromBinance {
     public static void main(String[] args) {
-        // Configure Chrome options
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");

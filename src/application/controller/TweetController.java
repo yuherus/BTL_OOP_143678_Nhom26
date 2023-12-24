@@ -33,7 +33,6 @@ public class TweetController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub 
 	}
 	
 	public void setTweetData(Tweet tweet) {

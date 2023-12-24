@@ -36,7 +36,6 @@ public class TweetListController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		TweetData tweetData = new TweetData();
 		tweetList = tweetData.getAllPosts();
 		System.out.println(tweetList.size());
@@ -54,12 +53,10 @@ public class TweetListController implements Initializable{
 	}
 	
 	private AnchorPane createTweetAnchorPane(Tweet tweet) {
-        // Create AnchorPane
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setId("pane_border_tweet");
         anchorPane.setPrefWidth(742.0);
 
-        // Create ImageView
         ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
         imageView.setFitHeight(52.0);
         imageView.setFitWidth(49.0);
@@ -67,7 +64,6 @@ public class TweetListController implements Initializable{
         imageView.setLayoutY(28.0);
         imageView.setPreserveRatio(true);
 
-        // Create Labels and Text
         Label tweetNameLabel = new Label("@"+tweet.getUserName());
         tweetNameLabel.setAlignment(javafx.geometry.Pos.CENTER);
         tweetNameLabel.setLayoutX(128.0);
@@ -89,21 +85,17 @@ public class TweetListController implements Initializable{
         dateLabel.setPrefWidth(102.0);
         dateLabel.setTextFill(javafx.scene.paint.Color.valueOf("#0000009c"));
 
-        // Add children to AnchorPane
         anchorPane.getChildren().addAll(imageView, tweetNameLabel, textArea, dateLabel);
         
-        // Set padding
         anchorPane.setPadding(new Insets(20.0, 0, 20.0, 0));
         anchorPane.setOnMouseClicked(event -> {
         	Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setTitle("Tweet");
 
-            // Set the FXML content to the pop-up stage
             Scene popupScene = new Scene(Model.getInstance().getViewFactory().getTweetView(tweet), 800, 500);
             popupStage.setScene(popupScene);
 
-            // Show the pop-up stage
             popupStage.showAndWait();
         });
         return anchorPane;

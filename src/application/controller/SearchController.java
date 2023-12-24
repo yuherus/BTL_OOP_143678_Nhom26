@@ -142,24 +142,20 @@ public class SearchController implements Initializable {
 
 
     private AnchorPane createBlogPane(Blog blog) {
-        // Tạo AnchorPane
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setPrefWidth(400); 
 
-        // Tạo ImageView
         ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
         imageView.setFitHeight(100);
         imageView.setFitWidth(160);
         AnchorPane.setTopAnchor(imageView, 20.0);
         AnchorPane.setLeftAnchor(imageView, 20.0);
 
-        // Tạo Label cho tiêu đề
         Label titleLabel = new Label(blog.getTitle());
         titleLabel.setPrefWidth(200); 
         AnchorPane.setTopAnchor(titleLabel, 20.0);
         AnchorPane.setLeftAnchor(titleLabel, 200.0);
 
-        // Tạo Text cho mô tả
         Label descriptionText = new Label(blog.getContent());
         descriptionText.setPrefHeight(60.0);
         descriptionText.setPrefWidth(200);
@@ -167,12 +163,10 @@ public class SearchController implements Initializable {
         AnchorPane.setTopAnchor(descriptionText, 40.0);
         AnchorPane.setLeftAnchor(descriptionText, 200.0);
 
-        // Tạo Text cho ngày đăng
         Text dateText = new Text(blog.getLocalDate().toString());
         AnchorPane.setTopAnchor(dateText, 100.0);
         AnchorPane.setLeftAnchor(dateText, 200.0);
 
-        // Thêm các thành phần vào AnchorPane
         anchorPane.getChildren().addAll(imageView, titleLabel, descriptionText, dateText);
         anchorPane.setOnMouseClicked(event -> {
             BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
@@ -182,12 +176,10 @@ public class SearchController implements Initializable {
     }
     
     private AnchorPane createTweetAnchorPane(Tweet tweet) {
-        // Create AnchorPane
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setId("pane_border_tweet");
         anchorPane.setPrefWidth(742.0);
 
-        // Create ImageView
         ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
         imageView.setFitHeight(52.0);
         imageView.setFitWidth(49.0);
@@ -195,7 +187,6 @@ public class SearchController implements Initializable {
         imageView.setLayoutY(28.0);
         imageView.setPreserveRatio(true);
 
-        // Create Labels and Text
         Label tweetNameLabel = new Label("@"+tweet.getUserName());
         tweetNameLabel.setAlignment(javafx.geometry.Pos.CENTER);
         tweetNameLabel.setLayoutX(128.0);
@@ -217,21 +208,17 @@ public class SearchController implements Initializable {
         dateLabel.setPrefWidth(102.0);
         dateLabel.setTextFill(javafx.scene.paint.Color.valueOf("#0000009c"));
 
-        // Add children to AnchorPane
         anchorPane.getChildren().addAll(imageView, tweetNameLabel, textArea, dateLabel);
         
-        // Set padding
         anchorPane.setPadding(new Insets(20.0, 0, 20.0, 0));
         anchorPane.setOnMouseClicked(event -> {
 		        	Stage popupStage = new Stage();
 		            popupStage.initModality(Modality.APPLICATION_MODAL);
 		            popupStage.setTitle("Tweet");
 
-		            // Set the FXML content to the pop-up stage
 		            Scene popupScene = new Scene(Model.getInstance().getViewFactory().getTweetView(tweet), 800, 500);
 		            popupStage.setScene(popupScene);
 
-		            // Show the pop-up stage
 		            popupStage.showAndWait();
 		});
         return anchorPane;

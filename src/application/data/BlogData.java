@@ -42,24 +42,18 @@ public class BlogData extends JsonToData<Blog> implements PostData<Blog> {
 
 	@Override
 	public boolean containsKeyword(String[] baseDataArray, String keyword) {
-		// Convert the keyword to lowercase for case-insensitive comparison
 		String lowercasedKeyword = keyword.toLowerCase();
 
-		// Iterate through each string in the array
 		for (String baseData : baseDataArray) {
-			// Convert the current base data to lowercase for comparison
 			String lowercasedBaseData = baseData.toLowerCase();
 
-			// Check if the lowercased base data contains the lowercased keyword
 			if (lowercasedBaseData.contains(lowercasedKeyword)) {
-				return true; // Return true if any string contains the keyword
+				return true; 
 			}
 		}
 
-		return false; // Return false if none of the strings contain the keyword
+		return false; 
 	}
-
-//	!If limit is 0, will return all data, if limit !=0. Will try to return number you want from result found
 
 	@Override
 	public ArrayList<Blog> getPostDataByKeyWord(String keyword, int limit) {
