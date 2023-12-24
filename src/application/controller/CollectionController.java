@@ -89,7 +89,7 @@ public class CollectionController extends Controller{
         anchorPane.setId("BlogPane"); 
         anchorPane.setPrefSize(343, 71);
 
-        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+        ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
         imageView.setFitHeight(43);
         imageView.setFitWidth(50);
         imageView.setLayoutX(12);
