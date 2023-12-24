@@ -2,18 +2,47 @@ package application.models;
 
 import java.util.List;
 
-public class Tweet extends Post {
-    private String userImage;
-    private String user;
-    private String userName;
-    private String timeStamps;
-    private String tweetText;
-    private List<String> tweetImage;
-    private String replys;
-    private String reTweets ;
-    private String likes;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public Tweet(String userImage, String user, String userName, String timeStamps, String tweetText, List<String> tweetImage, String replys, String reTweets, String likes) {
+public class Tweet extends Post {
+	@JsonProperty("userImage")
+    private String userImage;
+	
+	@JsonProperty("user")
+    private String user;
+	
+	@JsonProperty("userName")
+    private String userName;
+	
+	@JsonProperty("timeStamps")
+    private String timeStamps;
+	
+	@JsonProperty("tweetText")
+    private String tweetText;
+	
+	@JsonProperty("tweetImage")
+    private List<String> tweetImage;
+	
+	@JsonProperty("replys")
+    private String replys;
+	
+	@JsonProperty("reTweets")
+    private String reTweets ;
+	
+	@JsonProperty("likes")
+    private String likes;
+	
+	@JsonCreator
+    public Tweet(@JsonProperty("userImage")String userImage,
+	@JsonProperty("user")String user,
+	@JsonProperty("userName") String userName,
+	@JsonProperty("timeStamps") String timeStamps,	
+	@JsonProperty("tweetText") String tweetText,
+	@JsonProperty("tweetImage") List<String> tweetImage,
+	@JsonProperty("replys") String replys,
+	@JsonProperty("reTweets") String reTweets,
+	@JsonProperty("likes") String likes) {
         this.userImage = userImage;
         this.user = user;
         this.userName = userName;

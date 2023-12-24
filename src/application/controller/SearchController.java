@@ -73,10 +73,11 @@ public class SearchController implements Initializable {
             }
         }
 		
-		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(CollectionData.getCollectionBySearchWord(textField, 1000, "D1"));
-		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(CollectionData.getCollectionBySearchWord(textField, 1000, "D7"));
-		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(CollectionData.getCollectionBySearchWord(textField, 1000, "D30"));
-		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(CollectionData.getCollectionBySearchWord(textField, 1000, "H1"));		
+		CollectionData collectionData = new CollectionData();
+		ObservableList<Collection> top1DCollectionList =  FXCollections.observableArrayList(collectionData.getCollectionBySearchWord(textField, 1000, "D1"));
+		ObservableList<Collection> top7DCollectionList =  FXCollections.observableArrayList(collectionData.getCollectionBySearchWord(textField, 1000, "D7"));
+		ObservableList<Collection> top30DCollectionList =  FXCollections.observableArrayList(collectionData.getCollectionBySearchWord(textField, 1000, "D30"));
+		ObservableList<Collection> top1HCollectionList =  FXCollections.observableArrayList(collectionData.getCollectionBySearchWord(textField, 1000, "H1"));		
 		collectionList = top1DCollectionList;
 		collectionTable.setItems(collectionList);
 		
@@ -146,7 +147,7 @@ public class SearchController implements Initializable {
         anchorPane.setPrefWidth(400); 
 
         // Tạo ImageView
-        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+        ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
         imageView.setFitHeight(100);
         imageView.setFitWidth(160);
         AnchorPane.setTopAnchor(imageView, 20.0);

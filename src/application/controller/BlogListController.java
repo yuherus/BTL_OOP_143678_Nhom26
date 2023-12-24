@@ -42,7 +42,7 @@ public class BlogListController implements Initializable{
 		// TODO Auto-generated method stub
 		BlogData blogData = new BlogData();
 		blogList = blogData.getAllPosts();
-		ImageView imageView = new ImageView(new Image(blogList.get(0).getImageUrl()));
+		ImageView imageView = new ImageView(new Image(blogList.get(0).getImageUrl().get(0)));
         imageView.setFitHeight(340.0);
         imageView.setFitWidth(698.0);
         imageView.setLayoutX(230.0);
@@ -139,7 +139,7 @@ public class BlogListController implements Initializable{
 	        anchorPane.setPrefWidth(281.0); // Thiết lập chiều rộng theo nhu cầu của bạn
 
 	        // Tạo ImageView
-	        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+	        ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
 	        imageView.setFitHeight(133.0);
 	        imageView.setFitWidth(241.0);
 	        AnchorPane.setTopAnchor(imageView, 26.0);
