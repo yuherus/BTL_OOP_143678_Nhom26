@@ -1,4 +1,4 @@
-package application.data;
+package application.data.crawldata;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,4 +1,4 @@
-package application.data;
+package application.data.crawldata;
 
 import application.models.Tweet;
 

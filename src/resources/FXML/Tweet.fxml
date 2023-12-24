@@ -19,9 +19,9 @@
                   <children>
                      <AnchorPane prefWidth="731.0">
                         <children>
-                                    <Label id="date" fx:id="tweetTime" alignment="CENTER" layoutX="477.0" layoutY="25.0" prefHeight="22.0" prefWidth="201.0" text="Aug 29, 2023" textFill="#0000009c" />
+                                    <Label id="date" fx:id="tweetTime" alignment="CENTER" layoutX="442.0" layoutY="14.0" prefHeight="22.0" prefWidth="201.0" text="Aug 29, 2023" textFill="#0000009c" />
                                     <Text id="text" fx:id="tweetText" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ... HÀNH TRÌNH AXIE INFINITY TRỞ THÀNH TỰA GAME NFT GÂY SỐT TOÀN CẦUTrong những năm trở lại đây, chúng ta đã và đang chứng kiến sự bùng nổ của một tựa game đang rất hot tại Việt Nam ..." textAlignment="JUSTIFY" wrappingWidth="685.3333333333333" />
-                                    <Label id="tweet_name" fx:id="tweetUserName" alignment="CENTER" layoutX="89.0" layoutY="14.0" prefHeight="22.0" prefWidth="102.0" text="Vish.eth">
+                                    <Label id="tweet_name" fx:id="tweetUserName" layoutX="96.0" layoutY="14.0" prefHeight="22.0" prefWidth="282.0" text="Vish.eth">
                               <font>
                                  <Font name="System Bold" size="14.0" />
                               </font>

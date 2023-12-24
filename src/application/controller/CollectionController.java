@@ -23,7 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class CollectionController extends Controller{
+public class CollectionController {
 	@FXML
 	private Label collectionName;
 	
