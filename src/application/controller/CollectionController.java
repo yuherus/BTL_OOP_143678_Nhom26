@@ -23,7 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class CollectionController extends Controller{
+public class CollectionController {
 	@FXML
 	private Label collectionName;
 	
@@ -89,7 +89,7 @@ public class CollectionController extends Controller{
         anchorPane.setId("BlogPane"); 
         anchorPane.setPrefSize(343, 71);
 
-        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+        ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
         imageView.setFitHeight(43);
         imageView.setFitWidth(50);
         imageView.setLayoutX(12);
@@ -128,7 +128,6 @@ public class CollectionController extends Controller{
         anchorPane.setPrefWidth(343.0);
         anchorPane.setPrefHeight(71.0);
 
-        // Create ImageView
         ImageView imageView = new ImageView(new Image(tweet.getUserImage()));
         imageView.setFitHeight(43.0);
         imageView.setFitWidth(50.0);
@@ -136,7 +135,6 @@ public class CollectionController extends Controller{
         imageView.setLayoutY(12.0);
         imageView.setPreserveRatio(true);
 
-        // Create Labels
         Label usernameLabel = new Label("@"+tweet.getUserName());
         usernameLabel.setLayoutX(80.0);
         usernameLabel.setLayoutY(7.0);
@@ -151,18 +149,15 @@ public class CollectionController extends Controller{
         textLabel.setPrefHeight(20.0);
         textLabel.setPrefWidth(245.0);
 
-        // Add children to AnchorPane
         anchorPane.getChildren().addAll(imageView, usernameLabel, nameLabel, textLabel);
         anchorPane.setOnMouseClicked(event -> {
         	Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Tweet");
 
-        // Set the FXML content to the pop-up stage
         Scene popupScene = new Scene(Model.getInstance().getViewFactory().getTweetView(tweet), 800, 500);
         popupStage.setScene(popupScene);
 
-        // Show the pop-up stage
         popupStage.showAndWait();
         });
         return anchorPane;

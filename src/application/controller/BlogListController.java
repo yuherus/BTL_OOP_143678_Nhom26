@@ -39,10 +39,9 @@ public class BlogListController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		BlogData blogData = new BlogData();
 		blogList = blogData.getAllPosts();
-		ImageView imageView = new ImageView(new Image(blogList.get(0).getImageUrl()));
+		ImageView imageView = new ImageView(new Image(blogList.get(0).getImageUrl().get(0)));
         imageView.setFitHeight(340.0);
         imageView.setFitWidth(698.0);
         imageView.setLayoutX(230.0);
@@ -50,7 +49,6 @@ public class BlogListController implements Initializable{
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
 
-        // Tạo Label cho tiêu đề
         Label titleLabel = new Label(blogList.get(0).getTitle());
         titleLabel.setLayoutX(200.0);
         titleLabel.setLayoutY(418.0);
@@ -58,7 +56,6 @@ public class BlogListController implements Initializable{
         titleLabel.setPrefWidth(663.0);
         titleLabel.setStyle("-fx-font-size: 32.0;");
 
-        // Tạo Text cho mô tả
         Text descriptionText = new Text(blogList.get(0).getContent());
         descriptionText.setLayoutX(200.0);
         descriptionText.setLayoutY(495.0);
@@ -67,7 +64,6 @@ public class BlogListController implements Initializable{
         descriptionText.setWrappingWidth(655);
         descriptionText.setStyle("-fx-font-size: 20.0;");
 
-        // Tạo Text cho ngày đăng
         Text dateText = new Text(blogList.get(0).getLocalDate().toString());
         dateText.setFill(javafx.scene.paint.Color.valueOf("#0000009b"));
         dateText.setLayoutX(200.0);
@@ -76,7 +72,6 @@ public class BlogListController implements Initializable{
         dateText.setStrokeWidth(0.0);
         dateText.setWrappingWidth(125);
 
-        // Tạo Line
         Line line = new Line();
         line.setStartX(-80.0);
         line.setEndX(800.0);
@@ -84,7 +79,6 @@ public class BlogListController implements Initializable{
         line.setLayoutY(582.0);
         
         AnchorPane firstBlog = new AnchorPane();
-        // Thêm các thành phần vào AnchorPane
         firstBlog.getChildren().addAll(imageView, titleLabel, descriptionText, dateText, line);
         firstBlog.setOnMouseClicked(event -> {
             BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");
@@ -96,15 +90,13 @@ public class BlogListController implements Initializable{
 	}
 	
 	 public void setBlogData(List<Blog> blogLists) {
-	        // Tạo GridPane để chứa các bài đăng
 	        GridPane gridPane = new GridPane();
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10); 
 	        gridPane.setVgap(10);
 
-	        int columnCount = 3; // Số cột trong grid
+	        int columnCount = 3; 
 
-	        // Duyệt qua danh sách bài đăng và thêm chúng vào GridPane
 	        for (int i = 0; i < 6; i++) {
 	            Blog blog = blogLists.get(i);
 
@@ -128,30 +120,25 @@ public class BlogListController implements Initializable{
 	        	startIndex += 6;
 	        });
 
-	        // Thêm GridPane vào AnchorPane
 	        blogListPane.getChildren().add(gridPane);
 	    }
 
 
 	    private AnchorPane createBlogPane(Blog blog) {
-	        // Tạo AnchorPane
 	        AnchorPane anchorPane = new AnchorPane();
-	        anchorPane.setPrefWidth(281.0); // Thiết lập chiều rộng theo nhu cầu của bạn
+	        anchorPane.setPrefWidth(281.0);
 
-	        // Tạo ImageView
-	        ImageView imageView = new ImageView(new Image(blog.getImageUrl()));
+	        ImageView imageView = new ImageView(new Image(blog.getImageUrl().get(0)));
 	        imageView.setFitHeight(133.0);
 	        imageView.setFitWidth(241.0);
 	        AnchorPane.setTopAnchor(imageView, 26.0);
 	        AnchorPane.setLeftAnchor(imageView, 21.0);
 
-	        // Tạo Label cho tiêu đề
 	        Label titleLabel = new Label(blog.getTitle());
-	        titleLabel.setPrefWidth(236.0); // Thiết lập chiều rộng theo nhu cầu của bạn
+	        titleLabel.setPrefWidth(236.0); 
 	        AnchorPane.setTopAnchor(titleLabel, 165.0);
 	        AnchorPane.setLeftAnchor(titleLabel, 23.0);
 
-	        // Tạo Text cho mô tả
 	        Label descriptionText = new Label(blog.getContent());
 	        descriptionText.setPrefHeight(60.0);
 	        descriptionText.setPrefWidth(236.0);
@@ -159,12 +146,10 @@ public class BlogListController implements Initializable{
 	        AnchorPane.setTopAnchor(descriptionText, 190.0);
 	        AnchorPane.setLeftAnchor(descriptionText, 23.0);
 
-	        // Tạo Text cho ngày đăng
 	        Text dateText = new Text(blog.getLocalDate().toString());
 	        AnchorPane.setTopAnchor(dateText, 267.0);
 	        AnchorPane.setLeftAnchor(dateText, 23.0);
 
-	        // Thêm các thành phần vào AnchorPane
 	        anchorPane.getChildren().addAll(imageView, titleLabel, descriptionText, dateText);
 	        anchorPane.setOnMouseClicked(event -> {
                 BorderPane appBorderPane = (BorderPane) ((Node) event.getSource()).getScene().lookup("#app_border_pane");

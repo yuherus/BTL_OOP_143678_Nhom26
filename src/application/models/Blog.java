@@ -2,16 +2,44 @@ package application.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class Blog extends Post {
-	private String title;
-	private String description;
-	private String author;
-	private String content;
-	private String postDate;
-	private String url;
-	private String imageUrl;
 	
+	@JsonProperty("post_title")
+    private String title;
+
+    @JsonProperty("post_description")
+    private String description;
+
+    @JsonProperty("post_author")
+    private String author;
+
+    @JsonProperty("post_content")
+    private String content;
+
+    @JsonProperty("post_date")
+    private String postDate;
+
+    @JsonProperty("post_link")
+    private String url;
+
+    @JsonProperty("post_image")
+    private List<String> imageUrl;
+    
+    @JsonProperty("type")
+    private String type;
+
+    @JsonProperty("post_length")
+    private String length;
+
+    @JsonProperty("post_tags")
+    private String tags;
+    
 	public String getTitle() {
 		return title;
 	}
@@ -42,10 +70,10 @@ public class Blog extends Post {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getImageUrl() {
+	public List<String> getImageUrl() {
 		return imageUrl;
 	}
-	public void setImageUrl(String imageUrl) {
+	public void setImageUrl(List<String> imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 	public String getAuthor() {
@@ -54,17 +82,30 @@ public class Blog extends Post {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Blog(String title, String description, String author, String content, String postDate, String url,
-			String imageUrl) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.author = author;
-		this.content = content;
-		this.postDate = postDate;
-		this.url = url;
-		this.imageUrl = imageUrl;
-	}
+	
+	@JsonCreator
+    public Blog(@JsonProperty("post_title") String title,
+                @JsonProperty("post_description") String description,
+                @JsonProperty("post_author") String author,
+                @JsonProperty("post_content") String content,
+                @JsonProperty("post_date") String postDate,
+                @JsonProperty("post_link") String url,
+                @JsonProperty("post_image") List<String> imageUrl,
+                @JsonProperty("type") String type,
+                @JsonProperty("post_length") String length,
+                @JsonProperty("post_tags") String tags) {
+        super();
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.content = content;
+        this.postDate = postDate;
+        this.url = url;
+        this.imageUrl = imageUrl;
+        this.type = type;
+        this.length = length;
+        this.tags = tags;
+    }
 	
 		public LocalDate getLocalDate() {
 	        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
